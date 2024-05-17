@@ -8,7 +8,7 @@ public class Peashooter : MonoBehaviour
     private IState currentState;
     private Dictionary<PlantState,IState> states = new Dictionary<PlantState,IState>();
     public PlantData plantData = new PlantData() {plantHp =1};
-    
+    public PlantData_SO plantDatalsit;
     void Start()
     {
         states.Add(PlantState.Idle,new PeashooterIdleState(this));
