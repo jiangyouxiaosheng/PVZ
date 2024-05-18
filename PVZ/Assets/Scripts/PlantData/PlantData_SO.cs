@@ -8,12 +8,13 @@ public class PlantData_SO : ScriptableObject
 {
     public int plantID;
     public string plantName;
-    public Image plantImage;
+    public Sprite plantImage;
     public int plantHp;
     public float plantAttackSpeed;
     public int plantNeedSun;
     public bool plantSleep;
-
+    public float plantCD;
+    public GameObject plantPrefabs;
 
 
 }

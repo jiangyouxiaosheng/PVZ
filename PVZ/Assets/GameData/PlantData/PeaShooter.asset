@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantID: 1
   plantName: "\u8C4C\u8C46\u5C04\u624B"
-  plantImage: {fileID: 0}
+  plantImage: {fileID: 21300000, guid: db81a4066ddc3c74c8f7ef84a8cf1d53, type: 3}
   plantHp: 10
   plantAttackSpeed: 1
   plantNeedSun: 100
   plantSleep: 0
+  plantCD: 0
+  plantPrefabs: {fileID: 8940624097860443025, guid: f2a32b088a17edf4aaf2810af0b415dd, type: 3}
