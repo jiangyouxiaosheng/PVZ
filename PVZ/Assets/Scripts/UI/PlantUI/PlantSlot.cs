@@ -36,7 +36,9 @@ public class PlantSlot : MonoBehaviour
 
     public void FollowMoustEvent()
     {
+        MapCreate.Instance.MapTrue();
         inventoryUI.drawImage.GetComponent<DrawPlantImage>().FollowMousePos();
+
       
     }
  

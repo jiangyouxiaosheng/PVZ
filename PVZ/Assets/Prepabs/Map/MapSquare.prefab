@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 524808129
+  m_SortingLayer: 2
   m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -100,8 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantDatalist: {fileID: 11400000, guid: f323a0bc704940f45abbbf92436f5d34, type: 2}
-  plantPrefabs:
-  - {fileID: 8940624097860443025, guid: f2a32b088a17edf4aaf2810af0b415dd, type: 3}
 --- !u!61 &-8535587465398644086
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -118,7 +116,7 @@ BoxCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: -1
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295

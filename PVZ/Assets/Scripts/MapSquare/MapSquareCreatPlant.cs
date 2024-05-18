@@ -25,6 +25,7 @@ public class MapSquareCreatPlant : MonoBehaviour
     public void Init()
     {
         spriteRenderer.color = new Color(1, 1, 1, 0);
+       
     }
     public void PlantPreview(int plantID)
     {

@@ -6,6 +6,7 @@ public class DrawPlantImage : MonoBehaviour
 {
     private SpriteRenderer plantSprite;
     private PlantDataList_SO plantDatas;
+    private bool isCanClick;
     RaycastHit2D hit;
     private void Start()
     {
@@ -13,18 +14,23 @@ public class DrawPlantImage : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (isCanClick)
         {
-            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector3(transform.position.x, transform.position.y, -2);
-            hit = Physics2D.Raycast(new Vector3(transform.position.x,transform.position.y,-1), new Vector3(0, 0, 1), 4f);
-
-            if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>()!=null)
+            if (Input.GetKey(KeyCode.Mouse0))
             {
-                hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().PlantPreview(001);
+                transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                transform.position = new Vector3(transform.position.x, transform.position.y, -2);
+                hit = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y, -1), new Vector3(0, 0, 1), 4f);
+
+                if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>() != null)
+                {
+                    hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().PlantPreview(001);
+                   
+                }
+
             }
-          
         }
+      
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>() != null)
@@ -33,6 +39,8 @@ public class DrawPlantImage : MonoBehaviour
             }
         
             plantSprite.enabled = false;
+            MapCreate.Instance.MapFalse(); 
+            isCanClick = false;
         }
 
 
@@ -42,7 +50,7 @@ public class DrawPlantImage : MonoBehaviour
     
     public void FollowMousePos()
     {
-     
+        isCanClick = true;
         plantSprite.enabled = true;
     }
 }

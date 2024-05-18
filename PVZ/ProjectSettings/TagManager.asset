@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Sun
   - Water
   - UI
   - 
-  - 
+  - Map
   - 
   - 
   - 
@@ -43,4 +43,10 @@ TagManager:
     locked: 0
   - name: Plant
     uniqueID: 1086138863
+    locked: 0
+  - name: Map
+    uniqueID: 524808129
+    locked: 0
+  - name: Sun
+    uniqueID: 936407501
     locked: 0
