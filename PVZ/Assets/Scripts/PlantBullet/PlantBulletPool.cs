@@ -1,58 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
-public class SunManager : Singleton<SunManager>
+public class PlantBulletPool : MonoBehaviour
 {
     [SerializeField]
-    private int currentSun;
+    private GameObject bulletPrefabs;//子弹模型
 
-
-    [SerializeField]
-    private GameObject sunPrefabs;//阳光模型
-    [SerializeField]
-    private float createSunTime;// 需要时间
-    float createSunLastTime;//距离下一次阳光生成的时间
     Queue<GameObject> groundQueue = new Queue<GameObject>();
     private Transform thisTransform;
-    int size=2;
+    int size = 10;
 
 
-    private void Start()
-    {
-        createSunLastTime = createSunTime;
-    }
-
-
-    private void Update()
-    {
-        createSunLastTime -= Time.deltaTime;
-        if (createSunLastTime <= 0)
-        {
-           
-            PreparedRandomObject();
-            createSunLastTime = createSunTime;
-        }
-    }
-   
-
-    public void SunAdd()
-    {
-        currentSun += 25;
-    }
-    public int SunCount()
-    {
-        return currentSun;
-    }
 
 
     #region 生成对象池
     //复制预制体对象 加入对象池
     GameObject Copy()
     {
-
-        var copy = GameObject.Instantiate(sunPrefabs, transform);
+        var copy = GameObject.Instantiate(bulletPrefabs, transform);
         copy.SetActive(false);
         return copy;
     }
@@ -71,7 +37,7 @@ public class SunManager : Singleton<SunManager>
     GameObject AvailableObject()
     {
         GameObject avaliableObject = null;
-        if (groundQueue.Count > 0) //&& !queue.Peek().activeSelf
+        if (groundQueue.Count > 0) 
         {
             avaliableObject = groundQueue.Dequeue();
         }
@@ -85,22 +51,14 @@ public class SunManager : Singleton<SunManager>
     }
 
     //启用可用的对象
-    public GameObject PreparedObject()
+    public GameObject PreparedObject(Transform pos)
     {
         GameObject proparedObject = AvailableObject();
-
         proparedObject.SetActive(true);
-
+        proparedObject.transform.position = pos.position;
         return proparedObject;
     }
-    public GameObject PreparedRandomObject()
-    {
-        GameObject proparedObject = AvailableObject();
-        float sunX = Random.Range(0.0f, 15f);
-        proparedObject.transform.position = new Vector2(sunX, 12f);
-        proparedObject.SetActive(true);
-        return proparedObject;
-    }
+
 
 
     //让已用过的对象返回对象池(可与启用写在同一函数中)
@@ -112,10 +70,6 @@ public class SunManager : Singleton<SunManager>
     }
 
     #endregion
-
-
-
-
 
 
 }

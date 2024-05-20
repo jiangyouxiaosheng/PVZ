@@ -5,7 +5,8 @@ using UnityEngine;
 public class DrawPlantImage : MonoBehaviour
 {
     private SpriteRenderer plantSprite;
-    private PlantDataList_SO plantDatas;
+    public PlantDataList_SO plantDatas;
+    PlantData_SO plantData;
     private bool isCanClick;
     RaycastHit2D hit;
     private void Start()
@@ -24,7 +25,7 @@ public class DrawPlantImage : MonoBehaviour
 
                 if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>() != null)
                 {
-                    hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().PlantPreview(001);
+                    hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().PlantPreview(plantData.plantID);
                    
                 }
 
@@ -35,7 +36,7 @@ public class DrawPlantImage : MonoBehaviour
         {
             if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>() != null)
             {
-                hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().InstantiatePlant(001);
+                hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().InstantiatePlant(plantData.plantID);
             }
         
             plantSprite.enabled = false;
@@ -48,9 +49,10 @@ public class DrawPlantImage : MonoBehaviour
 
     }
     
-    public void FollowMousePos()
+    public void FollowMousePos(int ID)
     {
         isCanClick = true;
         plantSprite.enabled = true;
+        plantData = plantDatas.GetInventoryItem(ID);
     }
 }

@@ -4,3 +4,15 @@ public enum PlantState
     Shoot,
     Die,
 }
+
+public enum ZombieState
+{
+    Move,
+    Eat,
+    Die,
+}
+
+public enum ZombieType
+{
+    Normal,
+}

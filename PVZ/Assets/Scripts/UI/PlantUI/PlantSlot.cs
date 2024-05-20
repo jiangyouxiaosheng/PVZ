@@ -20,13 +20,13 @@ public class PlantSlot : MonoBehaviour
 
 
     public PlantDataList_SO plantDatalist;
-    private PlantData_SO plantData;
+     public PlantData_SO plantData;
     public InventoryUI inventoryUI => GetComponentInParent<InventoryUI>();
 
     private void Start()
     {
-        SetSlotInformation(001);
-      //      plantClick.onClick.AddListener(FollowMoustEvent);
+         SetSlotInformation(plantData.plantID);
+         //plantClick.onClick.AddListener(FollowMoustEvent);
     }
 
     private void Update()
@@ -37,7 +37,7 @@ public class PlantSlot : MonoBehaviour
     public void FollowMoustEvent()
     {
         MapCreate.Instance.MapTrue();
-        inventoryUI.drawImage.GetComponent<DrawPlantImage>().FollowMousePos();
+        inventoryUI.drawImage.GetComponent<DrawPlantImage>().FollowMousePos(plantData.plantID);
 
       
     }

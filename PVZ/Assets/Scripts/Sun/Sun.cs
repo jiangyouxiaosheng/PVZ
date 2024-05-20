@@ -52,6 +52,7 @@ public class Sun : MonoBehaviour
             {
                 SunManager.Instance.Return(gameObject);
                 SunManager.Instance.SunAdd();
+                isClicked = false;
             }
         }
        
@@ -60,8 +61,6 @@ public class Sun : MonoBehaviour
     public void ClickCollect()
     {
         isClicked = true;
-      
-    
     }
 
 

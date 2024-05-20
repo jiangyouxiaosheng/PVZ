@@ -5,7 +5,7 @@ using UnityEngine;
 public class PeashooterIdleState : IState
 {
     private Peashooter manager;
-    private PlantData plantData;
+ 
 
 
     private float idleTimer;
@@ -13,23 +13,22 @@ public class PeashooterIdleState : IState
     public PeashooterIdleState(Peashooter peashooter)
     {
         this.manager = peashooter;
-        this.plantData = manager.plantData;  
+   
     }
     public void OnEnter()
     {
-        idleTimer = 2f;
+     
     }
     public void OnUpdate()
     {
-        idleTimer -= Time.deltaTime;
-        Debug.LogError(plantData.plantHp);
-        Debug.LogError("´ý»ú×´Ì¬");
-        if (idleTimer < 0 )
+        if (manager.hit.collider != null)
         {
-            manager.TransitionState(PlantState.Shoot);
-            
+            if (manager.hit.collider.gameObject.tag == "Zombie")
+            {
+                manager.TransitionState(PlantState.Shoot);
+            }
         }
-     
+
     }
 
 
