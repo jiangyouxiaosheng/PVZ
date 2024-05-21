@@ -8,8 +8,6 @@ using UnityEngine.UI;
 public class PlantSlot : MonoBehaviour
 {
     [SerializeField]
-    private Button plantClick;
-    [SerializeField]
     private Image plantImage;
     [SerializeField]
     private TextMeshProUGUI plantNeedSun;
@@ -20,13 +18,14 @@ public class PlantSlot : MonoBehaviour
 
 
     public PlantDataList_SO plantDatalist;
-     public PlantData_SO plantData;
+    public PlantData_SO plantData;
     public InventoryUI inventoryUI => GetComponentInParent<InventoryUI>();
 
     private void Start()
     {
-         SetSlotInformation(plantData.plantID);
-         //plantClick.onClick.AddListener(FollowMoustEvent);
+        SetSlotInformation(1001);
+
+
     }
 
     private void Update()
@@ -38,8 +37,6 @@ public class PlantSlot : MonoBehaviour
     {
         MapCreate.Instance.MapTrue();
         inventoryUI.drawImage.GetComponent<DrawPlantImage>().FollowMousePos(plantData.plantID);
-
-      
     }
  
 

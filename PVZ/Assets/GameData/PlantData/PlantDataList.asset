@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantDataList:
   - {fileID: 11400000, guid: 2be1c39ce3c929a4b9d02caf45a54ba2, type: 2}
+  - {fileID: 11400000, guid: 2be1c39ce3c929a4b9d02caf45a54ba2, type: 2}
+  - {fileID: 11400000, guid: 2be1c39ce3c929a4b9d02caf45a54ba2, type: 2}

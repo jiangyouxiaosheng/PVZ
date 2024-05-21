@@ -16,3 +16,10 @@ public enum ZombieType
 {
     Normal,
 }
+
+public enum UIType
+{
+    ChoosePlant,
+    FightUI,
+    
+}

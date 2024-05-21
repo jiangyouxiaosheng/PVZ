@@ -21,6 +21,8 @@ public class PeashooterIdleState : IState
     }
     public void OnUpdate()
     {
+    
+       
         if (manager.hit.collider != null)
         {
             if (manager.hit.collider.gameObject.tag == "Zombie")
