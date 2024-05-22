@@ -14,12 +14,12 @@ public class Sun : MonoBehaviour
     private void Awake()
     {
         sunRemainingTimeRecord = sunRemainingTime;
-        sunDownTime = Random.Range(4, 13);
+        sunDownTime = Random.Range(4, 11);
     }
     private void OnEnable()
     {
          sunRemainingTime = sunRemainingTimeRecord;
-         sunDownTime = Random.Range(4,13);
+         sunDownTime = Random.Range(4,11);
      
 
     }
@@ -33,7 +33,7 @@ public class Sun : MonoBehaviour
             sunDownTime -= Time.deltaTime;
             if (sunDownTime > 0)
             {
-                 transform.Translate(Vector2.down * Time.deltaTime * 1f);
+                 transform.Translate(Vector2.down * Time.deltaTime * 50f);
 
             }
             else
@@ -47,8 +47,8 @@ public class Sun : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, Camera.main.ScreenToWorldPoint(UIManager.Instance.sunCountText.transform.position), 20 * Time.deltaTime);
-            if (Vector2.Distance(transform.position, Camera.main.ScreenToWorldPoint( UIManager.Instance.sunCountText.transform.position)) <= 0.5f)
+            transform.position = Vector3.MoveTowards(transform.position, UIManager.Instance.sunCountText.transform.position, 500 * Time.deltaTime);
+            if (Vector2.Distance(transform.position, UIManager.Instance.sunCountText.transform.position) <= 0.5f)
             {
                 SunManager.Instance.Return(gameObject);
                 SunManager.Instance.SunAdd();

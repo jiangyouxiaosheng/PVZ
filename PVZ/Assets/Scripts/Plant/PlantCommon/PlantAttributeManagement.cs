@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 
 public class PlantAttributeManagement : MonoBehaviour
 {
+    public Dictionary<GameObject,GameObject> destroyPlant = new Dictionary<GameObject,GameObject> ();
     [SerializeField]
     public PlantData_SO plantData_S0;
     public PlantData plantData = new PlantData();
@@ -26,4 +27,13 @@ public class PlantAttributeManagement : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void SetDestroyplantMap()
+    {
+        MapSquareCreatPlant mapS = destroyPlant[gameObject].GetComponent<MapSquareCreatPlant>();
+        mapS.DestroyPlant();
+        destroyPlant.Remove(gameObject);
+        Destroy(gameObject);
+    }
+
+
 }

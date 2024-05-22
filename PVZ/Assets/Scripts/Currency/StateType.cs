@@ -17,9 +17,9 @@ public enum ZombieType
     Normal,
 }
 
-public enum UIType
+public enum GameType
 {
     ChoosePlant,
-    FightUI,
+    Fight,
     
 }

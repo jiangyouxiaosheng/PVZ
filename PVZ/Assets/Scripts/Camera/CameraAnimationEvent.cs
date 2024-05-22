@@ -15,6 +15,7 @@ public class CameraAnimationEvent : MonoBehaviour
     private void OnEnable()
     {
         EventHandler.GameStartCameraMoveEvent += StartCameraAnimationPlay;
+        EventHandler.ChooseEndCameraMoveEvent += ChooseEndCameraAnimationPlay;
     }
 
     public void StartCameraAnimationPlay()
@@ -26,4 +27,14 @@ public class CameraAnimationEvent : MonoBehaviour
    {
         UIManager.Instance.UIStartAnimation();
    }
+    public void ChooseEndCameraAnimationPlay()
+    {
+        _animator.Play("ChooseEndCameraAnim");
+    }
+    public void InstantiateCarAndReadyTextAnimation()
+    {
+        CarManager.Instance.InstantiateCar();
+        UIManager.Instance.UIReadySetPlantAnimation();
+
+    }
 }

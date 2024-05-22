@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 3029573464079281700}
   - component: {fileID: 2450145417320594256}
   - component: {fileID: 4965829690722965525}
+  - component: {fileID: 8291525136415421999}
   m_Layer: 0
   m_Name: PeaShooter
   m_TagString: Untagged
@@ -160,6 +161,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantData_S0: {fileID: 11400000, guid: 2be1c39ce3c929a4b9d02caf45a54ba2, type: 2}
+--- !u!70 &8291525136415421999
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8940624097860443025}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.037641525, y: 0.22586465}
+  m_Size: {x: 9.973639, y: 15.921137}
+  m_Direction: 0
 --- !u!1001 &3448829565622264872
 PrefabInstance:
   m_ObjectHideFlags: 0

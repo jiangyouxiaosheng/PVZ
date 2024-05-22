@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class DrawPlantImage : MonoBehaviour
@@ -9,6 +10,7 @@ public class DrawPlantImage : MonoBehaviour
     PlantData_SO plantData;
     private bool isCanClick;
     RaycastHit2D hit;
+    
     private void Start()
     {
         plantSprite = GetComponent<SpriteRenderer>();
@@ -22,7 +24,7 @@ public class DrawPlantImage : MonoBehaviour
                 transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 transform.position = new Vector3(transform.position.x, transform.position.y, -2);
                 hit = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y, -1), new Vector3(0, 0, 1), 4f);
-
+                Debug.LogError(hit.collider);
                 if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>() != null)
                 {
                     hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().PlantPreview(plantData.plantID);
@@ -34,7 +36,7 @@ public class DrawPlantImage : MonoBehaviour
       
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>() != null)
+            if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>() != null && plantSprite.enabled !=false)
             {
                 hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().InstantiatePlant(plantData.plantID);
             }

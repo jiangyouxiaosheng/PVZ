@@ -7,10 +7,10 @@ public class MapSquareCreatPlant : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public PlantDataList_SO plantDatalist;
     private PlantData_SO plantData;
-    bool thisSquareIsUse;
+    public bool thisSquareIsUse;
     private Transform plantParents;
    // public List<GameObject> plantPrefabs;
-
+    
 
     private void Start()
     {
@@ -46,9 +46,17 @@ public class MapSquareCreatPlant : MonoBehaviour
             thisSquareIsUse = true;
             var plant = Instantiate(plantDatalist.GetInventoryItem(plantID).plantPrefabs, plantParents);
             plant.transform.position = transform.position;
+            plant.GetComponent<PlantAttributeManagement>().destroyPlant.Add(plant, this.gameObject);
             
-        }
+       }
    
+    }
+
+    public void DestroyPlant()
+    {
+        Init();
+        thisSquareIsUse = false;
+       
     }
 
 }

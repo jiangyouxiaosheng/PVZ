@@ -17,23 +17,30 @@ public class SunManager : Singleton<SunManager>
     Queue<GameObject> groundQueue = new Queue<GameObject>();
     private Transform thisTransform;
     int size=2;
-
+    public bool dayIsDay;
 
     private void Start()
     {
+        thisTransform = transform;
+        dayIsDay = false;
         createSunLastTime = createSunTime;
+        Init(thisTransform);
     }
 
 
     private void Update()
     {
-        createSunLastTime -= Time.deltaTime;
-        if (createSunLastTime <= 0)
+     
+        if (dayIsDay)
         {
-           
-            PreparedRandomObject();
-            createSunLastTime = createSunTime;
+            createSunLastTime -= Time.deltaTime;
+            if (createSunLastTime <= 0)
+            {
+                PreparedRandomObject();
+                createSunLastTime = createSunTime;
+            }
         }
+    
     }
    
 
@@ -44,14 +51,14 @@ public class SunManager : Singleton<SunManager>
     public int SunCount()
     {
         return currentSun;
+        
     }
-
+  
 
     #region 生成对象池
     //复制预制体对象 加入对象池
     GameObject Copy()
     {
-
         var copy = GameObject.Instantiate(sunPrefabs, transform);
         copy.SetActive(false);
         return copy;
@@ -80,7 +87,7 @@ public class SunManager : Singleton<SunManager>
             avaliableObject = Copy();
         }
 
-        //queue.Enqueue(avaliableObject);
+      
         return avaliableObject;
     }
 
@@ -96,8 +103,8 @@ public class SunManager : Singleton<SunManager>
     public GameObject PreparedRandomObject()
     {
         GameObject proparedObject = AvailableObject();
-        float sunX = Random.Range(0.0f, 15f);
-        proparedObject.transform.position = new Vector2(sunX, 12f);
+        float sunX = Random.Range(-400f, 400f);
+        proparedObject.transform.localPosition = new Vector2(sunX, 0) ;
         proparedObject.SetActive(true);
         return proparedObject;
     }

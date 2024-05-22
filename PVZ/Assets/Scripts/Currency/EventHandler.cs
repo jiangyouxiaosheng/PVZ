@@ -11,5 +11,10 @@ public static class EventHandler
        GameStartCameraMoveEvent?.Invoke();
     }
 
-  
+    public static event Action ChooseEndCameraMoveEvent;
+    public static void ChooseEndCameraMove()
+    {
+        ChooseEndCameraMoveEvent?.Invoke();
+    }
+
 }

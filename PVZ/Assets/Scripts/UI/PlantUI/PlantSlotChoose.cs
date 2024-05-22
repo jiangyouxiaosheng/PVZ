@@ -39,6 +39,7 @@ public class PlantSlotChoose : MonoBehaviour
                 transform.SetParent(UIManager.Instance.plantChoosed);
                 //UIManager.Instance.plantIDGameobject.Add(plantData.plantID,gameObject);
                 UIManager.Instance.plantChoosedPlant.Add(gameObject);
+                UIManager.Instance.inventoryUI.StartButtonSetactive();
                 isChoosed = false;
                 isChange = true;
             }
@@ -52,6 +53,8 @@ public class PlantSlotChoose : MonoBehaviour
             if (Vector3.Distance(transform.position, UIManager.Instance.plantCancelChoose.position) <= 0.3)
             {
                 transform.SetParent(UIManager.Instance.plantCanceParent);
+                UIManager.Instance.plantChoosedPlant.Remove(gameObject);
+                UIManager.Instance.inventoryUI.StartButtonSetactive();
                 isCancelChoose = false;
                 isChange = false;
             }
@@ -87,6 +90,7 @@ public class PlantSlotChoose : MonoBehaviour
         this.plantMaxCD = plantData.plantCD;
     }
 
+    //点击开始按钮后
     public void IsReadyDestroy()
     {
         var obj=  Instantiate(plantSlot,transform.position,Quaternion.identity);
