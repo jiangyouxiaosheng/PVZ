@@ -27,7 +27,7 @@ public class ZombieEatState : IState
             {
                 if (timer < 0)
                 {
-                    manager.hit.collider.GetComponent<PlantAttributeManagement>().PlantIsInjury(1);
+                    manager.hit.collider.GetComponent<PlantAttributeManagement>().PlantIsInjury(10);
                     timer = 1;
                 }
 

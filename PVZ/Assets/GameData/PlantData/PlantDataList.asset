@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: PlantDataList
   m_EditorClassIdentifier: 
   plantDataList:
+  - {fileID: 11400000, guid: 25b884764f937c445b43628dbd502053, type: 2}
+  - {fileID: 11400000, guid: 5a7a8be0a3caebd4a85a75711d7f2e97, type: 2}
   - {fileID: 11400000, guid: 2be1c39ce3c929a4b9d02caf45a54ba2, type: 2}
-  - {fileID: 11400000, guid: 2be1c39ce3c929a4b9d02caf45a54ba2, type: 2}
-  - {fileID: 11400000, guid: 2be1c39ce3c929a4b9d02caf45a54ba2, type: 2}
+  - {fileID: 11400000, guid: d5aa1d8dcc6f16848967a94decfaf47d, type: 2}
+  - {fileID: 11400000, guid: d43d0360cb481bc4caa52fb0e7fbee0c, type: 2}
+  - {fileID: 11400000, guid: 8d0992a7048e4464cbda956dd5c9616b, type: 2}
+  - {fileID: 11400000, guid: aae88618bf7d44f4c8235f8e8d911876, type: 2}

@@ -25,4 +25,10 @@ public class ZombieAttributeManagement : MonoBehaviour
         }
     }
 
+    public void ZombieIsDie()
+    {
+        zombieData.zombieHp = 0;
+        Destroy(gameObject);
+    }
+
 }

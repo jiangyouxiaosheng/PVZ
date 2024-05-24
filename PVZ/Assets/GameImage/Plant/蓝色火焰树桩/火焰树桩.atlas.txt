@@ -1,0 +1,25 @@
+火焰树桩.png
+size:302,77
+format:Alpha
+filter:Linear,Linear
+Torchwood_fire1a
+bounds:205,25,75,50
+Torchwood_fire1b
+bounds:102,3,72,51
+rotate:90
+Torchwood_fire1c
+bounds:155,3,72,48
+rotate:90
+半睁眼
+bounds:282,65,18,10
+半睁眼 拷贝
+bounds:282,21,30,15
+rotate:90
+嘴
+bounds:205,4,50,19
+身体
+bounds:2,2,98,73
+闭眼
+bounds:257,4,30,15
+闭眼 拷贝
+bounds:282,53,18,10

@@ -18,7 +18,7 @@ public class SunManager : Singleton<SunManager>
     private Transform thisTransform;
     int size=2;
     public bool dayIsDay;
-
+    
     private void Start()
     {
         thisTransform = transform;
@@ -92,10 +92,10 @@ public class SunManager : Singleton<SunManager>
     }
 
     //启用可用的对象
-    public GameObject PreparedObject()
+    public GameObject PreparedObject(Vector3 pos)
     {
         GameObject proparedObject = AvailableObject();
-
+        proparedObject.transform.position = pos;
         proparedObject.SetActive(true);
 
         return proparedObject;
@@ -104,7 +104,7 @@ public class SunManager : Singleton<SunManager>
     {
         GameObject proparedObject = AvailableObject();
         float sunX = Random.Range(-400f, 400f);
-        proparedObject.transform.localPosition = new Vector2(sunX, 0) ;
+        proparedObject.transform.localPosition = new Vector2(sunX, transform.position.y) ;
         proparedObject.SetActive(true);
         return proparedObject;
     }

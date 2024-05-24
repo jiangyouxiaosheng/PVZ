@@ -7,10 +7,28 @@ public class InventoryUI :MonoBehaviour
 {
     public GameObject drawImage;
     private Animator _animator;
+    public GameObject plantChooseBackground;
+    public Transform choosedPlantSlot;
+    public List<GameObject> plantChooseBackgroundList;
     public PlantChooseUI plantSlotChoose => GetComponentInChildren<PlantChooseUI>();
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+      //  Debug.LogError(GameManager.Instance.isCanUsePlantNum);
+        //for (int i = 0; i < 8; i++)
+        //{
+        //    var obj = Instantiate(plantChooseBackground, choosedPlantSlot);
+        //    plantChooseBackgroundList.Add(obj);
+        //}
+    }
+    private void Update()
+    {
+        
     }
 
 
@@ -25,12 +43,19 @@ public class InventoryUI :MonoBehaviour
 
     public void UIReadySetPlantAnimation()
     {
-        _animator.Play("ReadyText");
+        _animator.Play("ReadyTextAnim");
+    }
+
+    public void InstantiateCarAndReadyTextAnimation()
+    {
+       // UIManager.Instance.UIReadySetPlantAnimation();
+        UIReadySetPlantAnimation();
+        CarManager.Instance.InstantiateCar();
     }
     public void StartButtonSetactive()
     {
 
-        if (UIManager.Instance.plantChoosedPlant.Count > 0)
+        if (UIManager.Instance.startPlant.Count > 0)
         {
             plantSlotChoose.isCanStart.gameObject.SetActive(true);
         }
@@ -38,5 +63,17 @@ public class InventoryUI :MonoBehaviour
         {
             plantSlotChoose.isCanStart.gameObject.SetActive(false);
         }
+    }
+    public Transform ChoosedSlotIsNull()
+    {
+        for(int i = 0; i < plantChooseBackgroundList.Count; i++)
+        {
+            if (plantChooseBackgroundList[i].GetComponent<PlantSlotBackGround>().isUsed == false)
+            {
+                return plantChooseBackgroundList[i].GetComponent<PlantSlotBackGround>().transform;
+            }
+          
+        }
+        return null;
     }
 }

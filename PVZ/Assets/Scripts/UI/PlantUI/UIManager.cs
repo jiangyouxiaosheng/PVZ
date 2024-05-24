@@ -13,15 +13,16 @@ public class UIManager : Singleton<UIManager>
     public Transform plantCancelChoose;
     public Transform plantCanceParent;
     public Transform plantShovel;
-    public Image shocelPanel;
     public Transform sunPoint;
+    public Dictionary<GameObject,Transform> plantChooseDir = new Dictionary<GameObject,Transform>();
+    public Dictionary<GameObject, Transform> startPlant = new Dictionary<GameObject, Transform>();
 
     public List<GameObject> plantChoosedPlant = new List<GameObject>();
   public InventoryUI inventoryUI => GetComponent<InventoryUI>();
 
     private void Start()
     {
-        shocelPanel.gameObject.SetActive(true); 
+       
     }
 
     private void Update()
@@ -47,7 +48,7 @@ public class UIManager : Singleton<UIManager>
 
     public void ChoosedCardChange()
     {
-        shocelPanel.gameObject.SetActive(false);
+     
         UIEndAnimation();
         for (int i = 0; i < plantChoosedPlant.Count; i++)
         {

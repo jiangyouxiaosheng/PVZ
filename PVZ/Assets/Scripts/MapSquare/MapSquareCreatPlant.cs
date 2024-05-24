@@ -20,7 +20,10 @@ public class MapSquareCreatPlant : MonoBehaviour
 
     private void Update()
     {
-       
+        if (thisSquareIsUse)
+        {
+            Init();
+        }
     }
     public void Init()
     {
@@ -32,21 +35,20 @@ public class MapSquareCreatPlant : MonoBehaviour
         if (thisSquareIsUse == false)
         {
             plantData = plantDatalist.GetInventoryItem(plantID);
-            transform.localScale = new Vector3(0.1f, 0.1f, 1);
+            transform.localScale = Vector3.one;
             spriteRenderer.sprite = plantData.plantImage;
-            spriteRenderer.color = new Color(1, 1, 1, 100 / 255f);
-
+            spriteRenderer.color = new Color(1, 1, 1, 100 / 255f); 
         }
 
     }
     public void InstantiatePlant(int plantID)
     {
        if(thisSquareIsUse == false)
-        {
+       {
             thisSquareIsUse = true;
             var plant = Instantiate(plantDatalist.GetInventoryItem(plantID).plantPrefabs, plantParents);
             plant.transform.position = transform.position;
-            plant.GetComponent<PlantAttributeManagement>().destroyPlant.Add(plant, this.gameObject);
+            MapCreate.Instance.destroyPlant.Add(plant, this.gameObject);
             
        }
    

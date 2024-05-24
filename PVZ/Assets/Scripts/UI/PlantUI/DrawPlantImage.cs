@@ -25,28 +25,46 @@ public class DrawPlantImage : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, transform.position.y, -2);
                 hit = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y, -1), new Vector3(0, 0, 1), 4f);
                 Debug.LogError(hit.collider);
-                if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>() != null)
+                if (plantData.plantID != 1003)
                 {
-                    hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().PlantPreview(plantData.plantID);
-                   
+                    if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>() != null)
+                    {
+                        hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().PlantPreview(plantData.plantID);
+                    }
+
                 }
-
+                else
+                {
+                    MapCreate.Instance.isCanSet = true;
+                }
             }
-        }
-      
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>() != null && plantSprite.enabled !=false)
+
+            if (Input.GetKeyUp(KeyCode.Mouse0))
             {
-                hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().InstantiatePlant(plantData.plantID);
+                if (plantData.plantID != 1003)
+                {
+                    if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>() != null && plantSprite.enabled != false)
+                    {
+
+                        hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().InstantiatePlant(plantData.plantID);
+
+                    }
+                }
+                else
+                {
+                    if (hit.collider && hit.collider.gameObject.GetComponent<Peashooter>() != null && plantSprite.enabled != false)
+                    {
+                         hit.collider.gameObject.GetComponent<Peashooter>().attributeManagement.SetGatlingPea();
+                    }
+
+                }
+                MapCreate.Instance.isCanSet = false;
+                plantSprite.enabled = false;
+                MapCreate.Instance.MapFalse();
+                isCanClick = false;
             }
-        
-            plantSprite.enabled = false;
-            MapCreate.Instance.MapFalse(); 
-            isCanClick = false;
+
         }
-
-
 
 
     }
@@ -56,5 +74,7 @@ public class DrawPlantImage : MonoBehaviour
         isCanClick = true;
         plantSprite.enabled = true;
         plantData = plantDatas.GetInventoryItem(ID);
+        plantSprite.sprite = plantData.plantImage;
+        transform.localScale = Vector3.one;
     }
 }

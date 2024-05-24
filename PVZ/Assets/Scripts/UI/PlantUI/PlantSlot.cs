@@ -15,7 +15,8 @@ public class PlantSlot : MonoBehaviour
     private Image plantCDImage;
     private float plantMaxCD;
     private float plantCurrentCD;
-
+    //为了赶工期临时加的变量，直接给id赋值
+    public int plantID;
 
     public PlantDataList_SO plantDatalist;
     public PlantData_SO plantData;
@@ -23,8 +24,8 @@ public class PlantSlot : MonoBehaviour
 
     private void Start()
     {
-        SetSlotInformation(1001);
-
+        plantData = plantDatalist.GetInventoryItem(plantID);
+        SetSlotInformation(plantID);
 
     }
 
@@ -35,14 +36,18 @@ public class PlantSlot : MonoBehaviour
 
     public void FollowMoustEvent()
     {
-        MapCreate.Instance.MapTrue();
-        inventoryUI.drawImage.GetComponent<DrawPlantImage>().FollowMousePos(plantData.plantID);
+     
+        if(plantData.plantID != 1003)
+        {
+            MapCreate.Instance.MapTrue();
+        }
+       
+        inventoryUI.drawImage.GetComponent<DrawPlantImage>().FollowMousePos(plantID);
     }
  
 
     public void SetSlotInformation(int ID)
     {
-        plantData = plantDatalist.GetInventoryItem(ID);
         this.plantImage.sprite = plantData.plantImage;
         this.plantNeedSun.text = plantData.plantNeedSun.ToString();
         this.plantMaxCD = plantData.plantCD;

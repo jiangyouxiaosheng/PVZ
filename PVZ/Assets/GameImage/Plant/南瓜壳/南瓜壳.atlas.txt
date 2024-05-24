@@ -1,0 +1,14 @@
+南瓜壳.png
+size:581,76
+format:Alpha
+filter:Linear,Linear
+Pumpkin_back
+bounds:480,9,99,65
+Pumpkin_damage2
+bounds:2,2,118,72
+Pumpkin_damage3
+bounds:122,2,118,72
+Pumpkin_front
+bounds:242,2,117,72
+pumpkin_damage1
+bounds:361,2,117,72

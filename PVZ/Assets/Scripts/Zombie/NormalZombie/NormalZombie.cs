@@ -9,6 +9,8 @@ public class NormalZombie : MonoBehaviour
     private Dictionary<ZombieState, IState> states = new Dictionary<ZombieState, IState>();
     public ZombieData_SO zombieData;
     public RaycastHit2D hit;
+    public Transform eatPoint;
+    public LayerMask layerMask;
 
     void Start()
     {
@@ -21,7 +23,7 @@ public class NormalZombie : MonoBehaviour
     void Update()
     {
         currentState.OnUpdate();
-        hit = Physics2D.Raycast(transform.position, Vector2.left, 0.5f); 
+        hit = Physics2D.Raycast(eatPoint.transform.position, Vector2.left, 0.1f,layerMask); 
     }
 
     public void TransitionState(ZombieState type)

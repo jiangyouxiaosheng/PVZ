@@ -5,9 +5,6 @@ using UnityEngine;
 public class PeashooterIdleState : IState
 {
     private Peashooter manager;
- 
-
-
     private float idleTimer;
 
     public PeashooterIdleState(Peashooter peashooter)
@@ -17,19 +14,24 @@ public class PeashooterIdleState : IState
     }
     public void OnEnter()
     {
-     
+        idleTimer = manager.plantData.plantAttackSpeed;
+        manager._animator.Play("daiji");
     }
     public void OnUpdate()
     {
-    
-       
-        if (manager.hit.collider != null)
+  
+        idleTimer -=Time.deltaTime;
+        if (idleTimer <= 0)
         {
-            if (manager.hit.collider.gameObject.tag == "Zombie")
+            if (manager.hit.collider != null)
             {
-                manager.TransitionState(PlantState.Shoot);
+                if (manager.hit.collider.gameObject.tag == "Zombie")
+                {
+                    manager.TransitionState(PlantState.Shoot);
+                }
             }
         }
+     
 
     }
 

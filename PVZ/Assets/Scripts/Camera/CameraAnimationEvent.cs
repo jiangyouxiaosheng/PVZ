@@ -31,10 +31,5 @@ public class CameraAnimationEvent : MonoBehaviour
     {
         _animator.Play("ChooseEndCameraAnim");
     }
-    public void InstantiateCarAndReadyTextAnimation()
-    {
-        CarManager.Instance.InstantiateCar();
-        UIManager.Instance.UIReadySetPlantAnimation();
-
-    }
+  
 }

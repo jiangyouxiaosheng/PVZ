@@ -1,0 +1,6 @@
+窝瓜.png
+size:92,112
+format:Alpha
+filter:Linear,Linear
+眉毛
+bounds:2,2,88,108

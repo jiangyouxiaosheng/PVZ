@@ -11,16 +11,24 @@ public class Sun : MonoBehaviour
     private float sunRemainingTime;
     private float sunRemainingTimeRecord;
     bool isClicked;
+    public bool isDestroy;
     private void Awake()
     {
         sunRemainingTimeRecord = sunRemainingTime;
-        sunDownTime = Random.Range(4, 11);
+      
     }
     private void OnEnable()
     {
          sunRemainingTime = sunRemainingTimeRecord;
-         sunDownTime = Random.Range(4,11);
-     
+        if (isDestroy)
+        {
+            sunDownTime = 1;
+        }
+        else
+        {
+            sunDownTime = Random.Range(4f, 12f);
+        }
+        
 
     }
   
@@ -41,7 +49,15 @@ public class Sun : MonoBehaviour
                 sunRemainingTime -= Time.deltaTime;
                 if (sunRemainingTime <= 0)
                 {
-                    SunManager.Instance.Return(gameObject);
+                    if (isDestroy == false)
+                    {
+                        SunManager.Instance.Return(gameObject);
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
+            
                 }
             }
         }
@@ -50,7 +66,14 @@ public class Sun : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, UIManager.Instance.sunCountText.transform.position, 500 * Time.deltaTime);
             if (Vector2.Distance(transform.position, UIManager.Instance.sunCountText.transform.position) <= 0.5f)
             {
-                SunManager.Instance.Return(gameObject);
+                if (isDestroy == false)
+                {
+                    SunManager.Instance.Return(gameObject);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
                 SunManager.Instance.SunAdd();
                 isClicked = false;
             }
