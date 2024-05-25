@@ -17,8 +17,8 @@ MonoBehaviour:
   plantImage: {fileID: 21300000, guid: b3f25dd8f97404d448f1681783f1b341, type: 3}
   plantHp: 500
   plantAttackSpeed: 0
-  plantNeedSun: 0
+  plantNeedSun: 175
   plantSleep: 0
-  plantCD: 0
+  plantCD: 25
   plantAttackNum: 0
   plantPrefabs: {fileID: 7462206389357662515, guid: 73b507d0a3f667949b53640e58c9942a, type: 3}

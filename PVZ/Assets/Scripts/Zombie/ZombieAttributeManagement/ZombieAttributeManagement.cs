@@ -4,31 +4,87 @@ using UnityEngine;
 
 public class ZombieAttributeManagement : MonoBehaviour
 {
-    [SerializeField]
     public ZombieData_SO zombieData_SO;
     public ZombieData zombieData = new ZombieData();
-
-
-
+    public NormalZombie normalZombie;
+    public GameObject iceImage;
+    public GameObject iceSpecialEffects;
+    public float cantMoveTime;
+    public float moveSpeedDownTime;
+    public bool isCantMove;
+    
     private void Start()
     {
+        normalZombie = GetComponent<NormalZombie>();
+        Init();
+
+    }
+
+
+    private void Update()
+    {
+        ZombieMoveSpeedDown();
+        if (isCantMove)
+        {
+            ZombieIsCantMove();
+        }
+  
+       
+    }
+    public void Init()
+    {
         zombieData.Init(zombieData_SO);
+        normalZombie.TransitionState(ZombieState.Move);
     }
     public void ZombieIsInjury(int damage)
     {
-       
         zombieData.zombieHp -= damage;
-  
-        if (zombieData.zombieHp <= 0)
-        {
-            Destroy(gameObject);
-        }
     }
 
     public void ZombieIsDie()
     {
         zombieData.zombieHp = 0;
-        Destroy(gameObject);
+        ZombieManager.Instance.Return(gameObject);
+        Init(); 
+    }
+
+
+    public void ZombieIsCantMove()
+    {
+        cantMoveTime -= Time.deltaTime;
+        if(cantMoveTime > 0)
+        {
+            
+            zombieData.zombieMoveSpeed = 0;
+            iceImage.SetActive(true);
+            iceImage.SetActive(true);
+        }
+        else
+        {
+            
+            zombieData.zombieMoveSpeed = zombieData_SO.zombieMoveSpeed;
+            iceImage.SetActive(false);
+            cantMoveTime = 0;
+            iceImage.SetActive(false);
+            isCantMove = false;
+        }
+      
+    }
+
+    public void ZombieMoveSpeedDown()
+    {
+        moveSpeedDownTime -= Time.deltaTime;
+        if(moveSpeedDownTime > 0)
+        {
+            iceSpecialEffects.SetActive(true);
+            zombieData.zombieMoveSpeed = zombieData_SO.zombieMoveSpeed/2;
+        }
+        else
+        {
+            moveSpeedDownTime = 0;
+            iceSpecialEffects.SetActive(false);
+            zombieData.zombieMoveSpeed = zombieData_SO.zombieMoveSpeed ;
+        }
     }
 
 }

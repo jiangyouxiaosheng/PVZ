@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlantBulletPool : MonoBehaviour
@@ -13,7 +14,10 @@ public class PlantBulletPool : MonoBehaviour
 
 
 
-
+    private void Start()
+    {
+        Init(transform);
+    }
     #region 生成对象池
     //复制预制体对象 加入对象池
     GameObject Copy()

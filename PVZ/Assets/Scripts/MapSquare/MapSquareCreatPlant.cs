@@ -8,6 +8,7 @@ public class MapSquareCreatPlant : MonoBehaviour
     public PlantDataList_SO plantDatalist;
     private PlantData_SO plantData;
     public bool thisSquareIsUse;
+    public bool isHavePumpkin;
     private Transform plantParents;
    // public List<GameObject> plantPrefabs;
     
@@ -20,10 +21,15 @@ public class MapSquareCreatPlant : MonoBehaviour
 
     private void Update()
     {
-        if (thisSquareIsUse)
+        if (thisSquareIsUse&&plantData.plantID!=1008)
         {
             Init();
         }
+        if(thisSquareIsUse && isHavePumpkin)
+        {
+            Init();
+        }
+
     }
     public void Init()
     {
@@ -32,6 +38,13 @@ public class MapSquareCreatPlant : MonoBehaviour
     }
     public void PlantPreview(int plantID)
     {
+        if(isHavePumpkin==false)
+        {
+            plantData = plantDatalist.GetInventoryItem(plantID);
+            transform.localScale = Vector3.one;
+            spriteRenderer.sprite = plantData.plantImage;
+            spriteRenderer.color = new Color(1, 1, 1, 100 / 255f);
+        }
         if (thisSquareIsUse == false)
         {
             plantData = plantDatalist.GetInventoryItem(plantID);
@@ -43,8 +56,16 @@ public class MapSquareCreatPlant : MonoBehaviour
     }
     public void InstantiatePlant(int plantID)
     {
-       if(thisSquareIsUse == false)
+        if(isHavePumpkin == false&& plantData.plantID ==1008)
+        {
+            isHavePumpkin = true;
+            var plant = Instantiate(plantDatalist.GetInventoryItem(plantID).plantPrefabs, plantParents);
+            plant.transform.position = transform.position;
+            MapCreate.Instance.destroyPumkin.Add(plant, this.gameObject);
+        }
+       if(thisSquareIsUse == false && plantData.plantID != 1008)
        {
+           
             thisSquareIsUse = true;
             var plant = Instantiate(plantDatalist.GetInventoryItem(plantID).plantPrefabs, plantParents);
             plant.transform.position = transform.position;
@@ -54,6 +75,12 @@ public class MapSquareCreatPlant : MonoBehaviour
    
     }
 
+    public void DestroyPumpkin()
+    {
+
+        isHavePumpkin = false;
+
+    }
     public void DestroyPlant()
     {
         Init();

@@ -44,10 +44,23 @@ public class SunManager : Singleton<SunManager>
     }
    
 
-    public void SunAdd()
+    public void SunAdd(int sun)
     {
-        currentSun += 25;
+        currentSun += sun;
     }
+    public bool SunDown(int sun)
+    {
+        if(currentSun -sun < 0)
+        {
+            return false;
+        }
+        else
+        {
+            currentSun -= sun;
+            return true;
+        }
+    }
+
     public int SunCount()
     {
         return currentSun;

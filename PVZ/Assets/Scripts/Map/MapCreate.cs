@@ -7,7 +7,9 @@ public class MapCreate : Singleton<MapCreate>
     public List<GameObject> mapPosList = new List<GameObject>();
     private int x = 8, y = 4;
     public GameObject mapSquare;
+   
     public Dictionary<GameObject, GameObject> destroyPlant = new Dictionary<GameObject, GameObject>();
+    public Dictionary<GameObject, GameObject> destroyPumkin = new Dictionary<GameObject, GameObject>();
     public bool isCanSet;
     private void Start()
     {
@@ -31,7 +33,7 @@ public class MapCreate : Singleton<MapCreate>
 
     private void Update()
     {
-     
+        
     }
     public void MapFalse()
     {

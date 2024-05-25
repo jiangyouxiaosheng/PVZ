@@ -74,7 +74,7 @@ public class Sun : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
-                SunManager.Instance.SunAdd();
+                SunManager.Instance.SunAdd(25);
                 isClicked = false;
             }
         }

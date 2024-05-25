@@ -12,5 +12,6 @@ public class ZombieData_SO : ScriptableObject
     public float zombieAttackSpeed;
     public float zombieMoveSpeed;
     public GameObject zombiePrefabs;
+    public int zombieAttack;
 
 }

@@ -13,8 +13,14 @@ public class PlantAttributeManagement : MonoBehaviour
     public PlantDataList_SO plantDataList;
     private Transform plantParents;
     public bool isDoubleShooter;
+    public bool isNowDie;
+    public bool isPumpkin;
     private void Start()
     {
+        if(isDoubleShooter == false)
+        {
+
+        }
         plantParents = GameObject.Find("PlantsParent").transform;
         plantData.Init(plantData_S0);
     }
@@ -25,7 +31,15 @@ public class PlantAttributeManagement : MonoBehaviour
         Debug.LogError(plantData.plantHp); 
         if(plantData.plantHp <= 0)
         {
-           // Destroy(gameObject);
+            if (isNowDie)
+            {
+                SetDestroyplantMap();
+            }
+            if (isPumpkin)
+            {
+                SetDestroyPumpkinMap();
+            }
+           
         }
     }
     public void SetDestroyplantMap()
@@ -33,6 +47,14 @@ public class PlantAttributeManagement : MonoBehaviour
         MapSquareCreatPlant mapS = MapCreate.Instance.destroyPlant[gameObject].GetComponent<MapSquareCreatPlant>();
         mapS.DestroyPlant();
         MapCreate.Instance.destroyPlant.Remove(gameObject);
+        Destroy(gameObject);
+    }
+
+    public void SetDestroyPumpkinMap()
+    {
+        MapSquareCreatPlant mapS = MapCreate.Instance.destroyPumkin[gameObject].GetComponent<MapSquareCreatPlant>();
+        mapS.DestroyPumpkin();
+        MapCreate.Instance.destroyPumkin.Remove(gameObject);
         Destroy(gameObject);
     }
 

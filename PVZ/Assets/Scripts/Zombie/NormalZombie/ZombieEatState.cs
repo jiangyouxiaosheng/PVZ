@@ -15,7 +15,8 @@ public class ZombieEatState : IState
     }
     public void OnEnter()
     {
-        Debug.LogError(manager.zombieData.zombieName + "进入了吃植物的状态");
+        //Debug.LogError(manager.zombieData.zombieName + "进入了吃植物的状态");
+        
     }
 
     public void OnUpdate()
@@ -27,7 +28,7 @@ public class ZombieEatState : IState
             {
                 if (timer < 0)
                 {
-                    manager.hit.collider.GetComponent<PlantAttributeManagement>().PlantIsInjury(10);
+                    manager.hit.collider.GetComponent<PlantAttributeManagement>().PlantIsInjury(manager.zombieData.zombieAttack);
                     timer = 1;
                 }
 
@@ -35,15 +36,32 @@ public class ZombieEatState : IState
         }
         else
         {
-            
                 manager.TransitionState(ZombieState.Move);
-            
         }
-       
-
+        EatState(manager.attributeManagement.zombieData.zombieHp);
+        if (manager.attributeManagement.zombieData.zombieHp <= 0)
+        {
+            manager.TransitionState(ZombieState.Die);
+        }
     }
     public void OnExit()
     {
 
+    }
+    void EatState(int hp)
+    {
+        if (hp <= 0)
+        {
+            // manager.TransitionState(null);
+        }
+        switch (hp)
+        {
+            case > 50:
+                manager._animator.Play("攻击");
+                break;
+            case <= 50:
+                manager._animator.Play("断手攻击");
+                break;
+        }
     }
 }

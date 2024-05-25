@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2679783270315669094}
   - component: {fileID: -8535587465398644086}
   - component: {fileID: -5261441274718591821}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MapSquare
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 524808129
   m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingOrder: 12
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantDatalist: {fileID: 11400000, guid: f323a0bc704940f45abbbf92436f5d34, type: 2}
   thisSquareIsUse: 0
+  isHavePumpkin: 0
 --- !u!61 &-8535587465398644086
 BoxCollider2D:
   m_ObjectHideFlags: 0

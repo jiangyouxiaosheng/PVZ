@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4378824442668265309}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 8367234342221427075}
   - component: {fileID: 2436859511827247121}
   - component: {fileID: 2809590207107175581}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Torchwood
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,6 +108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantData_S0: {fileID: 11400000, guid: aae88618bf7d44f4c8235f8e8d911876, type: 2}
+  plantDataList: {fileID: 0}
+  isDoubleShooter: 0
+  isNowDie: 1
 --- !u!61 &2436859511827247121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -137,10 +140,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.08474827, y: 0.25498563}
+  m_Offset: {x: 0.21965392, y: 0.25498563}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -151,7 +154,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1694965, y: 1.7293197}
+  m_Size: {x: 0.89968526, y: 1.7293197}
   m_EdgeRadius: 0
 --- !u!114 &2809590207107175581
 MonoBehaviour:
@@ -178,7 +181,7 @@ GameObject:
   - component: {fileID: 134023943546239390}
   - component: {fileID: 2834840247780459469}
   - component: {fileID: 7774075041110433892}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "Spine Mecanim GameObject (\u706B\u7130\u6811\u6869)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

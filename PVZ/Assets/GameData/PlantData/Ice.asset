@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce3f343b60e9b94285a60e4c276896b, type: 3}
+  m_Name: Ice
+  m_EditorClassIdentifier: 
+  plantID: 1009
+  plantName: "\u51B0\u51BB\u6C34\u6676"
+  plantImage: {fileID: 21300000, guid: adf0a8636476d1848b5922aa0edbdca5, type: 3}
+  plantHp: 9999
+  plantAttackSpeed: 0
+  plantNeedSun: 200
+  plantSleep: 0
+  plantCD: 100
+  plantAttackNum: 0
+  plantPrefabs: {fileID: 2758247329223863327, guid: 487024af99b4f8146b06e876a9b6528e, type: 3}

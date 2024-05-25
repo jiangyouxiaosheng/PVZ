@@ -27,7 +27,16 @@ public class Shovel : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    hit.collider.GetComponent<PlantAttributeManagement>().SetDestroyplantMap();
+                    if(hit.collider.GetComponent<PlantAttributeManagement>().plantData.plantID !=1008)
+                    {
+                        hit.collider.GetComponent<PlantAttributeManagement>().SetDestroyplantMap();
+                    }
+                    else
+                    {
+                        hit.collider.GetComponent<PlantAttributeManagement>().SetDestroyPumpkinMap();
+                    }
+
+                   
                     _sprite.enabled = false;
                     shovelUI.ShovelImage.SetActive(true);
                 }

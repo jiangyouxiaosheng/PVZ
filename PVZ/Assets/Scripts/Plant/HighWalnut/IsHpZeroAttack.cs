@@ -11,7 +11,7 @@ public class IsHpZeroAttack : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.LogError("!11");
+       
         if(collision.gameObject.tag == "Zombie")
         {
             collision.gameObject.GetComponent<ZombieAttributeManagement>().ZombieIsDie();

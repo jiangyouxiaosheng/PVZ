@@ -10,6 +10,7 @@ public enum ZombieState
     Move,
     Eat,
     Die,
+    Run,
 }
 
 public enum ZombieType

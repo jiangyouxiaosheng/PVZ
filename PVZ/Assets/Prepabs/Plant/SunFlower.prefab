@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8869739796526369052}
   - component: {fileID: 2954814065283746985}
   - component: {fileID: 8424980153459321895}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "Spine Mecanim GameObject (\u5411\u65E5\u8475)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,9 +163,9 @@ GameObject:
   - component: {fileID: 5599088666400123958}
   - component: {fileID: 2522959098877119935}
   - component: {fileID: 4074862372933203598}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SunFlower
-  m_TagString: Untagged
+  m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,7 +243,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.06292629, y: 0.10352391}
@@ -262,6 +262,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantData_S0: {fileID: 11400000, guid: 25b884764f937c445b43628dbd502053, type: 2}
+  plantDataList: {fileID: 0}
+  isDoubleShooter: 0
+  isNowDie: 1
 --- !u!114 &4074862372933203598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6289366346956476051}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

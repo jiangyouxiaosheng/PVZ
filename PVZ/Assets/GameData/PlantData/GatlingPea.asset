@@ -15,10 +15,10 @@ MonoBehaviour:
   plantID: 1003
   plantName: "\u673A\u67AA\u5C04\u624B"
   plantImage: {fileID: 21300000, guid: c582fabdfb2f49240bf36887e4586c5d, type: 3}
-  plantHp: 100
+  plantHp: 50
   plantAttackSpeed: 2
-  plantNeedSun: 400
+  plantNeedSun: 200
   plantSleep: 0
-  plantCD: 0
+  plantCD: 30
   plantAttackNum: 4
   plantPrefabs: {fileID: 8278853140066830717, guid: 92aba815618f2f04da8c4f7b7db42af4, type: 3}

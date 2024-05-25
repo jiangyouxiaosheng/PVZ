@@ -15,7 +15,7 @@ MonoBehaviour:
   zombieID: 2001
   zombieName: "\u666E\u901A\u50F5\u5C38"
   zombieImage: {fileID: 0}
-  zombieHp: 10
+  zombieHp: 100
   zombieAttackSpeed: 1
-  zombieMoveSpeed: 1
-  zombiePrefabs: {fileID: 492955766317707727, guid: 316ea6bb211bfe446a5841ed20895dbe, type: 3}
+  zombieMoveSpeed: 0.5
+  zombiePrefabs: {fileID: 2210100566023746543, guid: c1c865fd8bed1a74ebba4059399789c7, type: 3}

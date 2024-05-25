@@ -11,11 +11,16 @@ public class NormalZombie : MonoBehaviour
     public RaycastHit2D hit;
     public Transform eatPoint;
     public LayerMask layerMask;
+    public Animator _animator;
+    public ZombieAttributeManagement attributeManagement;
 
     void Start()
     {
+        attributeManagement = GetComponent<ZombieAttributeManagement>();
         states.Add(ZombieState.Move, new ZombieMoveState(this));
         states.Add(ZombieState.Eat, new ZombieEatState(this));
+        states.Add(ZombieState.Die,new ZombieDiestate(this));
+        states.Add(ZombieState.Run, new ZombieRunState(this));
         TransitionState(ZombieState.Move);
     }
 
