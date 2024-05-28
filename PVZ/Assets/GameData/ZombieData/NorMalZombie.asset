@@ -19,3 +19,4 @@ MonoBehaviour:
   zombieAttackSpeed: 1
   zombieMoveSpeed: 0.5
   zombiePrefabs: {fileID: 2210100566023746543, guid: c1c865fd8bed1a74ebba4059399789c7, type: 3}
+  zombieAttack: 10

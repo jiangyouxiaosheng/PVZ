@@ -13,6 +13,7 @@ public class PlantData
     public bool plantSleep;
     public float plantCD;
     public int plantAttackNum;
+    public int plantAttack;
     public GameObject plantPrefabs;
 
 
@@ -29,5 +30,6 @@ public class PlantData
         plantCD = plantData_SO.plantCD;
         plantPrefabs = plantData_SO.plantPrefabs;
         plantAttackNum = plantData_SO.plantAttackNum;
+        plantAttack = plantData_SO.plantAttack;
     }
 }

@@ -138,6 +138,7 @@ MonoBehaviour:
   fireBullet: {fileID: 4531358299544339479}
   normalBulletDamage: 5
   fireBulletDamage: 10
+  destroyThis: {fileID: 1731985796504087042, guid: a98036853216edd49b1ddcdb07a93f6e, type: 3}
 --- !u!1001 &9179467131948206302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,6 +147,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6462594680375968686}
     m_Modifications:
+    - target: {fileID: 1348808435268400202, guid: 3d1072aeb3e01f84dbe7d597be0194a3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1348808435268400202, guid: 3d1072aeb3e01f84dbe7d597be0194a3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3825178737077136402, guid: 3d1072aeb3e01f84dbe7d597be0194a3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3825178737077136402, guid: 3d1072aeb3e01f84dbe7d597be0194a3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4670315502468374501, guid: 3d1072aeb3e01f84dbe7d597be0194a3, type: 3}
       propertyPath: m_LocalScale.x
       value: -1

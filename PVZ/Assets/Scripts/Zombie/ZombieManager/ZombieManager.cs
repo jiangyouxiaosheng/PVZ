@@ -15,27 +15,37 @@ public class ZombieManager : Singleton<ZombieManager>
     public float normalZombieTime;//正常的出僵尸的速度
     public float maxNormalTime;//尸潮来袭
     public float zombieStartTime;//游戏开始等待时间
+    public bool zombieStart;
     public bool isZombiesComing;//是否来袭尸潮
     public float zombiesLastTime;//尸潮持续时间
-
+    public float zombiesCurrentLastTime;
+   
 
 
     private void Start()
     {
+       
+        zombiesLastTime = 10f;
         maxNormalTime = normalZombieTime;
         Init(transform);
-     
+        zombiesCurrentLastTime = 10f;
     }
 
 
     private void Update()
     {
+     
         InstantiateZombie();
         if (isZombiesComing)
         {
            
-            normalZombieTime = 0.1f;
-         
+            normalZombieTime = 0.3f;
+            zombiesLastTime -= Time.deltaTime;
+            if (zombiesLastTime < 0)
+            {
+                isZombiesComing = false;
+                zombiesLastTime = zombiesCurrentLastTime;
+            }
         }
         else
         {
@@ -46,9 +56,8 @@ public class ZombieManager : Singleton<ZombieManager>
  
     public void InstantiateZombie()
     {
-        
         zombieStartTime-=Time.deltaTime;
-        if (zombieStartTime < 0)
+        if (zombieStartTime < 0 && zombieStart)
         {
             zombieStartTime = normalZombieTime;
             int r = Random.Range(0, 5);

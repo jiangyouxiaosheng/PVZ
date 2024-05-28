@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce3f343b60e9b94285a60e4c276896b, type: 3}
+  m_Name: Doom
+  m_EditorClassIdentifier: 
+  plantID: 1010
+  plantName: "\u6BC1\u706D\u83C7"
+  plantImage: {fileID: 21300000, guid: 0463eeaa3c532b8439b7f9f3f7668548, type: 3}
+  plantHp: 999
+  plantAttackSpeed: 0
+  plantNeedSun: 400
+  plantSleep: 0
+  plantCD: 90
+  plantAttackNum: 0
+  plantPrefabs: {fileID: 213512561089872380, guid: e21d4d53f9cf8104a9dcb0631c05da96, type: 3}

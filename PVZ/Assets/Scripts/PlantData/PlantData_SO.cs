@@ -15,6 +15,7 @@ public class PlantData_SO : ScriptableObject
     public bool plantSleep;
     public float plantCD;
     public int plantAttackNum;
+    public int plantAttack;
     public GameObject plantPrefabs;
 
 

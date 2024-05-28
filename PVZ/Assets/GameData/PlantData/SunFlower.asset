@@ -16,9 +16,10 @@ MonoBehaviour:
   plantName: "\u5411\u65E5\u8475"
   plantImage: {fileID: 21300000, guid: 0d48200b5a6c32b489d2b3d40e6bab5a, type: 3}
   plantHp: 50
-  plantAttackSpeed: 10
+  plantAttackSpeed: 8
   plantNeedSun: 50
   plantSleep: 0
   plantCD: 10
   plantAttackNum: 0
+  plantAttack: 8
   plantPrefabs: {fileID: 6439344625171373454, guid: 6c183515595802941aa118324af6651e, type: 3}

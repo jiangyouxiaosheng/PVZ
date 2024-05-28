@@ -40,7 +40,8 @@ public class PlantSlot : MonoBehaviour
     private void Update()
     {
         Sun(plantData.plantNeedSun);
-         plantCurrentCD -=Time.deltaTime;
+
+        plantCurrentCD -= Time.deltaTime;
         if (plantCurrentCD > 0)
         {
             plantCDImage.gameObject.SetActive(true);
@@ -51,6 +52,8 @@ public class PlantSlot : MonoBehaviour
             plantCDImage.gameObject.SetActive(false);
             plantCurrentCD = 0;
         }
+
+
     }
 
     public void ResetCd()
@@ -59,7 +62,7 @@ public class PlantSlot : MonoBehaviour
     }
     public void FollowMoustEvent()
     {
-        if(plantCurrentCD <= 0&& SunManager.Instance.SunDown(plantData.plantNeedSun))
+        if(plantCurrentCD <= 0 && SunManager.Instance.SunClick(plantData.plantNeedSun))
         {
             if (plantData.plantID != 1003)
             {

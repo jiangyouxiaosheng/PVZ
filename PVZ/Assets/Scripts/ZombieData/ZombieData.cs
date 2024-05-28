@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ZombieData 
 {
-    public int zombieID;
     public string zombieName;
     public Sprite zombieImage;
     public int zombieHp;
@@ -15,7 +14,6 @@ public class ZombieData
 
     public void Init(ZombieData_SO zombieData_SO)
     {
-        zombieID= zombieData_SO.zombieID;
         zombieName = zombieData_SO.zombieName;
         zombieImage = zombieData_SO.zombieImage;
         zombieHp =  zombieData_SO.zombieHp;

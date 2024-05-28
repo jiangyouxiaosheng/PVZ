@@ -10,18 +10,20 @@ public class NormalPlantBullet : MonoBehaviour
     public GameObject fireBullet;
     public int normalBulletDamage;
     public int fireBulletDamage;
+    public GameObject destroyThis;
 
     bool isFire;
     private void Start()
     {
         bulletPool = GetComponentInParent<PlantBulletPool>();
-        
+        fireBulletDamage = GetComponentInParent<PlantBulletPool>().gameObject.GetComponent<PlantAttributeManagement>().plantAttack;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector2.right * Time.deltaTime * 3f);
+     
     }
 
 
@@ -32,12 +34,13 @@ public class NormalPlantBullet : MonoBehaviour
             if (isFire)
             {
                 collision.GetComponent<ZombieAttributeManagement>().ZombieIsInjury(fireBulletDamage);
-               
+                Instantiate(destroyThis,transform.position, Quaternion.identity);
             }
             else
             {
                 collision.GetComponent<ZombieAttributeManagement>().ZombieIsInjury(normalBulletDamage);
                 collision.GetComponent<ZombieAttributeManagement>().moveSpeedDownTime = 5f;
+                Instantiate(destroyThis, transform.position, Quaternion.identity);
             }
 
             bulletPool.Return(gameObject);

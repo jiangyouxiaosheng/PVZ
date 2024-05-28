@@ -12,7 +12,7 @@ public class SunManager : Singleton<SunManager>
     [SerializeField]
     private GameObject sunPrefabs;//阳光模型
     [SerializeField]
-    private float createSunTime;// 需要时间
+    public float createSunTime;// 需要时间
     float createSunLastTime;//距离下一次阳光生成的时间
     Queue<GameObject> groundQueue = new Queue<GameObject>();
     private Transform thisTransform;
@@ -22,7 +22,6 @@ public class SunManager : Singleton<SunManager>
     private void Start()
     {
         thisTransform = transform;
-        dayIsDay = false;
         createSunLastTime = createSunTime;
         Init(thisTransform);
     }
@@ -48,7 +47,7 @@ public class SunManager : Singleton<SunManager>
     {
         currentSun += sun;
     }
-    public bool SunDown(int sun)
+    public bool SunClick(int sun)
     {
         if(currentSun -sun < 0)
         {
@@ -56,9 +55,21 @@ public class SunManager : Singleton<SunManager>
         }
         else
         {
-            currentSun -= sun;
             return true;
         }
+    }
+
+    public  void SunDown(int sun)
+    {
+        if(currentSun -sun < 0)
+        {
+            currentSun = 0;
+        }
+        else
+        {
+            currentSun -= sun;
+        }
+       
     }
 
     public int SunCount()

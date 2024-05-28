@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f249101ecea6740a40a9ae67a00561, type: 3}
+  m_Name: EventStart
+  m_EditorClassIdentifier: 
+  eventTitle: NEWS
+  eventText: "\u201C\u76EE\u524D\uFF0C\u5404\u56FD\u5DF2\u7ECF\u9488\u5BF9\u6B64\u6B21\u4E27\u5C38\u4E8B\u4EF6\u505A\u51FA\u53CA\u65F6\u6076\u7684\u5E94\u5BF9\uFF0C\u8BF7\u7FA4\u4F17\u4EEC\u4FDD\u62A4\u597D\u81EA\u5DF1\uFF0C\u5E76\u4E14\u7B49\u5F85\u519B\u961F\u7684\u6551\u63F4\uFF08\u4E8B\u4EF6\u5F00\u59CB\uFF09\u201D"
+  eventImage: {fileID: -1545832817, guid: 83ae67eb6945a4d4ebef01597544a723, type: 3}

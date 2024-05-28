@@ -363,8 +363,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantData_S0: {fileID: 11400000, guid: d43d0360cb481bc4caa52fb0e7fbee0c, type: 2}
-  plantDataList: {fileID: 0}
+  plantDataList: {fileID: 11400000, guid: f323a0bc704940f45abbbf92436f5d34, type: 2}
+  plantAttack: 0
   isDoubleShooter: 0
+  isNowDie: 0
+  isPumpkin: 0
 --- !u!114 &3578817884616874021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd28a54f02b4994ca17d72237b4e75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantData: {fileID: 0}
+  plantData: {fileID: 11400000, guid: d43d0360cb481bc4caa52fb0e7fbee0c, type: 2}
   _animator_Children: {fileID: 4472376595602405916}
   _animator: {fileID: 0}
   attributeManagement: {fileID: 0}

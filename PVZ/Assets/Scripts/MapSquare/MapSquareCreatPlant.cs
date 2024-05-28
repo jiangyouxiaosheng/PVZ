@@ -1,5 +1,7 @@
+using Spine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MapSquareCreatPlant : MonoBehaviour
@@ -56,22 +58,26 @@ public class MapSquareCreatPlant : MonoBehaviour
     }
     public void InstantiatePlant(int plantID)
     {
-        if(isHavePumpkin == false&& plantData.plantID ==1008)
+       
+        if (isHavePumpkin == false&& plantData.plantID ==1008)
         {
             isHavePumpkin = true;
             var plant = Instantiate(plantDatalist.GetInventoryItem(plantID).plantPrefabs, plantParents);
             plant.transform.position = transform.position;
             MapCreate.Instance.destroyPumkin.Add(plant, this.gameObject);
+            //GameManager.Instance.plantList.Add(plant);
         }
        if(thisSquareIsUse == false && plantData.plantID != 1008)
        {
            
             thisSquareIsUse = true;
+         
             var plant = Instantiate(plantDatalist.GetInventoryItem(plantID).plantPrefabs, plantParents);
             plant.transform.position = transform.position;
             MapCreate.Instance.destroyPlant.Add(plant, this.gameObject);
-            
-       }
+            //GameManager.Instance.plantList.Add(plant);
+
+        }
    
     }
 

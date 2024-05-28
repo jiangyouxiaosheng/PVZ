@@ -46,11 +46,9 @@ public class HighWalnut : MonoBehaviour
         currentState.OnEnter();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void DestroyGameobject()
     {
-        if (collision.gameObject.tag == "Zombie")
-        {
-            collision.gameObject.GetComponent<ZombieAttributeManagement>().ZombieIsDie();
-        }
+        Destroy(gameObject);
     }
+
 }

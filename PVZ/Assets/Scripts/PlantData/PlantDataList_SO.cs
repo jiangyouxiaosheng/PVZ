@@ -12,4 +12,19 @@ public class PlantDataList_SO : ScriptableObject
     {
         return plantDataList.Find(i => i.plantID == ID);
     }
+    public void PlantAttackAdd(int num)
+    {
+        for(int i = 0; i < plantDataList.Count; i++)
+        {
+            plantDataList[i].plantAttack += num;
+        }
+    }
+
+    public void Init()
+    {
+        for (int i = 0; i < plantDataList.Count; i++)
+        {
+            plantDataList[i].plantAttack = 8;
+        }
+    }
 }

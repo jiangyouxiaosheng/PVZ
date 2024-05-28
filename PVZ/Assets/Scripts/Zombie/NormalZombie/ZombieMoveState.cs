@@ -17,7 +17,7 @@ public class ZombieMoveState : IState
     public void OnEnter()
     {
 
-        timer = 2f;
+        timer = Random.Range(3, 5);
     }
 
     public void OnUpdate()
@@ -43,7 +43,7 @@ public class ZombieMoveState : IState
     }
     public void OnExit()
     {
-        timer = 2f;
+       
     }
 
     void MoveState(int hp)

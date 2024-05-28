@@ -20,6 +20,7 @@ public class ICE : MonoBehaviour
         if(timer < 0f)
         {
             ZombieManager.Instance.AllZombieStop();
+            UIManager.Instance.inventoryUI.IceAnimation();
             attributeManagement.SetDestroyplantMap();
            
         }

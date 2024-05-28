@@ -10,6 +10,7 @@ public class Car : MonoBehaviour
     float addTime;
     float maxTime=1.5f;
     bool isMeetEnemy;
+    float endTime=10f;
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -18,6 +19,7 @@ public class Car : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         timer -=Time.deltaTime;
         addTime += Time.deltaTime;
         if(timer < 0)
@@ -31,6 +33,11 @@ public class Car : MonoBehaviour
         if (isMeetEnemy)
         {
             transform.Translate(Vector2.right * Time.deltaTime * 10f);
+            endTime -= Time.deltaTime;
+            if(endTime < 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     public void TimerAdd(float i)

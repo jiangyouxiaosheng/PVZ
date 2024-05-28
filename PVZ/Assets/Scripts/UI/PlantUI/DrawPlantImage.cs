@@ -57,18 +57,20 @@ public class DrawPlantImage : MonoBehaviour
                     if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>() != null && plantSprite.enabled != false)
                     {
 
-                        hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().InstantiatePlant(plantData.plantID);
                         slot.GetComponent<PlantSlot>().ResetCd();
                         SunManager.Instance.SunDown(plantData.plantNeedSun);
+                        hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().InstantiatePlant(plantData.plantID);
+                   
+
                     }
                 }
                 else
                 {
                     if (hit.collider && hit.collider.gameObject.GetComponent<Peashooter>() != null && plantSprite.enabled != false)
                     {
-                         hit.collider.gameObject.GetComponent<Peashooter>().attributeManagement.SetGatlingPea();
-                         SunManager.Instance.SunDown(plantData.plantNeedSun);
-                         slot.GetComponent<PlantSlot>().ResetCd();
+                        slot.GetComponent<PlantSlot>().ResetCd();
+                        SunManager.Instance.SunDown(plantData.plantNeedSun);
+                        hit.collider.gameObject.GetComponent<Peashooter>().attributeManagement.SetGatlingPea(slot);
                     }
 
                 }

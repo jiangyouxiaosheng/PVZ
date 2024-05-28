@@ -108,9 +108,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantData_S0: {fileID: 11400000, guid: aae88618bf7d44f4c8235f8e8d911876, type: 2}
-  plantDataList: {fileID: 0}
+  plantDataList: {fileID: 11400000, guid: f323a0bc704940f45abbbf92436f5d34, type: 2}
+  plantAttack: 0
   isDoubleShooter: 0
   isNowDie: 1
+  isPumpkin: 0
 --- !u!61 &2436859511827247121
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ZombieData", menuName = "Zombie/ZombieData")]
 public class ZombieData_SO : ScriptableObject
 {
-    public int zombieID;
     public string zombieName;
     public Sprite zombieImage;
     public int zombieHp;
@@ -14,4 +13,14 @@ public class ZombieData_SO : ScriptableObject
     public GameObject zombiePrefabs;
     public int zombieAttack;
 
+
+    public void Init()
+    {
+        zombieHp = 60;
+        zombieMoveSpeed = 0.5f;
+        zombieAttack = 10;
+    }
+
 }
+
+

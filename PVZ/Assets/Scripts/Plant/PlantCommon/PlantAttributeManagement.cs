@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
+using Spine;
 
 public class PlantAttributeManagement : MonoBehaviour
 {
@@ -12,17 +13,19 @@ public class PlantAttributeManagement : MonoBehaviour
     public PlantData plantData = new PlantData();
     public PlantDataList_SO plantDataList;
     private Transform plantParents;
+    public int plantAttack;
     public bool isDoubleShooter;
     public bool isNowDie;
     public bool isPumpkin;
     private void Start()
     {
-        if(isDoubleShooter == false)
-        {
-
-        }
+       
         plantParents = GameObject.Find("PlantsParent").transform;
         plantData.Init(plantData_S0);
+    }
+    private void Update()
+    {
+        plantAttack = plantData.plantAttack;
     }
     public void PlantIsInjury(int damage)
     {
@@ -47,6 +50,7 @@ public class PlantAttributeManagement : MonoBehaviour
         MapSquareCreatPlant mapS = MapCreate.Instance.destroyPlant[gameObject].GetComponent<MapSquareCreatPlant>();
         mapS.DestroyPlant();
         MapCreate.Instance.destroyPlant.Remove(gameObject);
+       // GameManager.Instance.plantList.Remove(gameObject);
         Destroy(gameObject);
     }
 
@@ -55,19 +59,23 @@ public class PlantAttributeManagement : MonoBehaviour
         MapSquareCreatPlant mapS = MapCreate.Instance.destroyPumkin[gameObject].GetComponent<MapSquareCreatPlant>();
         mapS.DestroyPumpkin();
         MapCreate.Instance.destroyPumkin.Remove(gameObject);
+       // GameManager.Instance.plantList.Remove(gameObject);
         Destroy(gameObject);
     }
 
-    public void SetGatlingPea()
+    public void SetGatlingPea(GameObject slot)
     {
         if (isDoubleShooter)
         {
+            
             MapSquareCreatPlant mapS = MapCreate.Instance.destroyPlant[gameObject].GetComponent<MapSquareCreatPlant>();
             GameObject obj = Instantiate(plantDataList.GetInventoryItem(1003).plantPrefabs);
             obj.transform.SetParent(plantParents);
             obj.transform.position = transform.position;
             MapCreate.Instance.destroyPlant.Remove(gameObject);
+           // GameManager.Instance.plantList.Remove(gameObject);
             MapCreate.Instance.destroyPlant.Add(obj, mapS.gameObject);
+           // GameManager.Instance.plantList.Add(gameObject);
             Destroy(gameObject);
         }
 

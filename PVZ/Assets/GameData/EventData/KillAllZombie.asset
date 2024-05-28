@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f249101ecea6740a40a9ae67a00561, type: 3}
+  m_Name: KillAllZombie
+  m_EditorClassIdentifier: 
+  eventTitle: "\u519B\u961F\u6765\u4E86"
+  eventText: "\u201D\u5929\u5450\uFF0C\u519B\u961F\u6765\u6551\u6211\u4EEC\u4E86\u201C\uFF0C\u201C\u8BF7\u5E78\u5B58\u8005\u4EEC\u6709\u5E8F\u8FDB\u5165\u6551\u63F4\u8F66\u201D\uFF08\u6E05\u7406\u4E00\u6B21\u5C4F\u5E55\u6240\u6709\u50F5\u5C38\uFF09"
+  eventImage: {fileID: -349946800, guid: 83ae67eb6945a4d4ebef01597544a723, type: 3}

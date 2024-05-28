@@ -44,8 +44,6 @@ public class ZombieAttributeManagement : MonoBehaviour
     public void ZombieIsDie()
     {
         zombieData.zombieHp = 0;
-        ZombieManager.Instance.Return(gameObject);
-        Init(); 
     }
 
 

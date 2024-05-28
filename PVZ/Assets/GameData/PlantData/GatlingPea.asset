@@ -21,4 +21,5 @@ MonoBehaviour:
   plantSleep: 0
   plantCD: 30
   plantAttackNum: 4
+  plantAttack: 8
   plantPrefabs: {fileID: 8278853140066830717, guid: 92aba815618f2f04da8c4f7b7db42af4, type: 3}

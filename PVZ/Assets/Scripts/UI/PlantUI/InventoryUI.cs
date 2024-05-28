@@ -11,7 +11,7 @@ public class InventoryUI :MonoBehaviour
     public Transform choosedPlantSlot;
     public List<GameObject> plantChooseBackgroundList;
     public PlantChooseUI plantSlotChoose => GetComponentInChildren<PlantChooseUI>();
-
+    public Animator _IceAnimaor;
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -31,6 +31,10 @@ public class InventoryUI :MonoBehaviour
         
     }
 
+    public void IceAnimation()
+    {
+        _IceAnimaor.Play("ice");
+    }
 
     public void UIStartAnimation()
     {
@@ -75,5 +79,10 @@ public class InventoryUI :MonoBehaviour
           
         }
         return null;
+    }
+
+    public void GameStart()
+    {
+        EventHandler.GameStart();
     }
 }

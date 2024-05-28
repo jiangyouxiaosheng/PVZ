@@ -30,13 +30,16 @@ public class HighWalnutIdleState : IState
         //{
         //    manager._animator.Play("daiji2");
         //}
+        if (manager.attributeManagement.plantData.plantHp < 500 && manager.attributeManagement.plantData.plantHp >= 250)
+        {
+            manager._animator_Children.Play("daiji");
+        }
 
-       
-        if (manager.attributeManagement.plantData.plantHp <60 && manager.attributeManagement.plantData.plantHp > 30)
+        if (manager.attributeManagement.plantData.plantHp < 250 && manager.attributeManagement.plantData.plantHp > 100)
         {
             manager._animator_Children.Play("daiji2");
         }
-        if (manager.attributeManagement.plantData.plantHp < 30)
+        if (manager.attributeManagement.plantData.plantHp < 100)
         {
             manager._animator_Children.Play("daiji3");
         }

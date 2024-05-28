@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f249101ecea6740a40a9ae67a00561, type: 3}
+  m_Name: Event3
+  m_EditorClassIdentifier: 
+  eventTitle: "\u79D8\u5BC6\u6587\u4EF6"
+  eventText: "\u201C\u554A\uFF0C\u89C1\u9B3C\uFF0C\u8FD9\u8BE5\u6B7B\u7684\u5B66\u5F92\uFF0C\u4ED6\u600E\u4E48\u6253\u7FFB\u4E86\u5B9E\u9A8C\u7684\u5668\u76BF\uFF0C\u522B\u8BA9\u6211\u89C1\u5230\u4ED6\u5426\u5219\u6211\u4E00\u5B9A\u4ECE\u540E\u9762\u8E22\u4ED6\u7684\u5C41\u80A1\u201D--\u7F8E\u4E3D\u56FD911\u5B9E\u9A8C\u5BA4\u3002\u5F53\u7136\uFF0C\u8FD9\u4F4D\u79D1\u5B66\u5BB6\u6210\u4E86\u5B66\u5F92\u7684\u76D8\u4E2D\u9910\u3002"
+  eventImage: {fileID: 874693596, guid: 83ae67eb6945a4d4ebef01597544a723, type: 3}
