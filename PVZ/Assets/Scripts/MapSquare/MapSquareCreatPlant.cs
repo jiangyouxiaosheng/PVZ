@@ -12,8 +12,8 @@ public class MapSquareCreatPlant : MonoBehaviour
     public bool thisSquareIsUse;
     public bool isHavePumpkin;
     private Transform plantParents;
-   // public List<GameObject> plantPrefabs;
-    
+    // public List<GameObject> plantPrefabs;
+   // private AudioSource _audioSource =>GetComponent<AudioSource>();
 
     private void Start()
     {
@@ -56,22 +56,26 @@ public class MapSquareCreatPlant : MonoBehaviour
         }
 
     }
-    public void InstantiatePlant(int plantID)
+    public void InstantiatePlant(int plantID,GameObject slot)
     {
        
+        
         if (isHavePumpkin == false&& plantData.plantID ==1008)
         {
             isHavePumpkin = true;
             var plant = Instantiate(plantDatalist.GetInventoryItem(plantID).plantPrefabs, plantParents);
             plant.transform.position = transform.position;
             MapCreate.Instance.destroyPumkin.Add(plant, this.gameObject);
+            slot.GetComponent<PlantSlot>().ResetCd();
+            SunManager.Instance.SunDown(plantData.plantNeedSun);
             //GameManager.Instance.plantList.Add(plant);
         }
        if(thisSquareIsUse == false && plantData.plantID != 1008)
        {
            
             thisSquareIsUse = true;
-         
+            slot.GetComponent<PlantSlot>().ResetCd();
+            SunManager.Instance.SunDown(plantData.plantNeedSun);
             var plant = Instantiate(plantDatalist.GetInventoryItem(plantID).plantPrefabs, plantParents);
             plant.transform.position = transform.position;
             MapCreate.Instance.destroyPlant.Add(plant, this.gameObject);

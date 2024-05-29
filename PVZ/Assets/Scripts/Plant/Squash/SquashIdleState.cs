@@ -24,9 +24,15 @@ public class SquashIdleState : IState
 
     public void OnUpdate()
     {
-       if(manager.isLeft||manager.isRight)
-       {
-            if(manager.isLeft)
+        if(manager.isRight && manager.isLeft)
+        {
+            manager._animator_Children.Play("gongji");
+            manager._animator.Play("SquashMoveLeft");
+
+        }
+        else if (manager.isLeft || manager.isRight)
+        {
+            if (manager.isLeft)
             {
                 manager._animator_Children.Play("gongji");
                 manager._animator.Play("SquashMoveLeft");
@@ -36,7 +42,8 @@ public class SquashIdleState : IState
                 manager._animator_Children.Play("gongji");
                 manager._animator.Play("SquashMoveRight");
             }
-       }
+        }
+
     }
 
    

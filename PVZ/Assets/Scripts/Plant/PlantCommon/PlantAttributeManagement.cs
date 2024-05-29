@@ -17,9 +17,10 @@ public class PlantAttributeManagement : MonoBehaviour
     public bool isDoubleShooter;
     public bool isNowDie;
     public bool isPumpkin;
+    private AudioSource _audioSource=> GetComponent<AudioSource>();
     private void Start()
     {
-       
+        _audioSource.Play();
         plantParents = GameObject.Find("PlantsParent").transform;
         plantData.Init(plantData_S0);
     }
@@ -34,13 +35,16 @@ public class PlantAttributeManagement : MonoBehaviour
         Debug.LogError(plantData.plantHp); 
         if(plantData.plantHp <= 0)
         {
+            VoiceManager.Instance.Eat();
             if (isNowDie)
             {
                 SetDestroyplantMap();
+           
             }
             if (isPumpkin)
             {
                 SetDestroyPumpkinMap();
+          
             }
            
         }
@@ -50,7 +54,6 @@ public class PlantAttributeManagement : MonoBehaviour
         MapSquareCreatPlant mapS = MapCreate.Instance.destroyPlant[gameObject].GetComponent<MapSquareCreatPlant>();
         mapS.DestroyPlant();
         MapCreate.Instance.destroyPlant.Remove(gameObject);
-       // GameManager.Instance.plantList.Remove(gameObject);
         Destroy(gameObject);
     }
 
@@ -59,7 +62,7 @@ public class PlantAttributeManagement : MonoBehaviour
         MapSquareCreatPlant mapS = MapCreate.Instance.destroyPumkin[gameObject].GetComponent<MapSquareCreatPlant>();
         mapS.DestroyPumpkin();
         MapCreate.Instance.destroyPumkin.Remove(gameObject);
-       // GameManager.Instance.plantList.Remove(gameObject);
+
         Destroy(gameObject);
     }
 
@@ -67,15 +70,15 @@ public class PlantAttributeManagement : MonoBehaviour
     {
         if (isDoubleShooter)
         {
-            
+            slot.GetComponent<PlantSlot>().ResetCd();
+            SunManager.Instance.SunDown(plantData.plantNeedSun);
             MapSquareCreatPlant mapS = MapCreate.Instance.destroyPlant[gameObject].GetComponent<MapSquareCreatPlant>();
             GameObject obj = Instantiate(plantDataList.GetInventoryItem(1003).plantPrefabs);
             obj.transform.SetParent(plantParents);
             obj.transform.position = transform.position;
             MapCreate.Instance.destroyPlant.Remove(gameObject);
-           // GameManager.Instance.plantList.Remove(gameObject);
             MapCreate.Instance.destroyPlant.Add(obj, mapS.gameObject);
-           // GameManager.Instance.plantList.Add(gameObject);
+         
             Destroy(gameObject);
         }
 

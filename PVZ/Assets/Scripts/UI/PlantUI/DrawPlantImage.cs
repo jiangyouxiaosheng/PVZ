@@ -12,7 +12,7 @@ public class DrawPlantImage : MonoBehaviour
     private GameObject slot;
     RaycastHit2D hit;
     public LayerMask layerMask;
-    
+    private AudioSource _audioSource => GetComponent<AudioSource>();
     private void Start()
     {
         plantSprite = GetComponent<SpriteRenderer>();
@@ -28,6 +28,7 @@ public class DrawPlantImage : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.Mouse0))
             {
+                
                 transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 transform.position = new Vector3(transform.position.x, transform.position.y, -2);
                 hit = Physics2D.Raycast(new Vector3(transform.position.x, transform.position.y, -1), new Vector3(0, 0, 1), 4f,layerMask);
@@ -57,9 +58,8 @@ public class DrawPlantImage : MonoBehaviour
                     if (hit.collider && hit.collider.gameObject.GetComponent<MapSquareCreatPlant>() != null && plantSprite.enabled != false)
                     {
 
-                        slot.GetComponent<PlantSlot>().ResetCd();
-                        SunManager.Instance.SunDown(plantData.plantNeedSun);
-                        hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().InstantiatePlant(plantData.plantID);
+                       
+                        hit.collider.gameObject.GetComponent<MapSquareCreatPlant>().InstantiatePlant(plantData.plantID,slot);
                    
 
                     }
@@ -68,8 +68,7 @@ public class DrawPlantImage : MonoBehaviour
                 {
                     if (hit.collider && hit.collider.gameObject.GetComponent<Peashooter>() != null && plantSprite.enabled != false)
                     {
-                        slot.GetComponent<PlantSlot>().ResetCd();
-                        SunManager.Instance.SunDown(plantData.plantNeedSun);
+                       
                         hit.collider.gameObject.GetComponent<Peashooter>().attributeManagement.SetGatlingPea(slot);
                     }
 
@@ -93,5 +92,6 @@ public class DrawPlantImage : MonoBehaviour
         plantSprite.sprite = plantData.plantImage;
         transform.localScale = Vector3.one;
         slot = obj;
+        _audioSource.Play();
     }
 }

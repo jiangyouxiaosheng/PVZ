@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InventoryUI :MonoBehaviour
@@ -12,11 +13,13 @@ public class InventoryUI :MonoBehaviour
     public List<GameObject> plantChooseBackgroundList;
     public PlantChooseUI plantSlotChoose => GetComponentInChildren<PlantChooseUI>();
     public Animator _IceAnimaor;
+    
     private void Awake()
     {
         _animator = GetComponent<Animator>();
     }
 
+    
     private void Start()
     {
       //  Debug.LogError(GameManager.Instance.isCanUsePlantNum);
@@ -26,11 +29,29 @@ public class InventoryUI :MonoBehaviour
         //    plantChooseBackgroundList.Add(obj);
         //}
     }
+    private void OnEnable()
+    {
+        EventHandler.ZombieIsCommingEvent += ZombieIsComming;
+        EventHandler.GameOverEvent += GameOver;
+    }
+    private void OnDisable()
+    {
+        EventHandler.ZombieIsCommingEvent -= ZombieIsComming;
+        EventHandler.GameOverEvent -= GameOver;
+    }
     private void Update()
     {
         
     }
 
+    public void ReStartGame()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void GameOver()
+    {
+        _animator.Play("GameOver");
+    }
     public void IceAnimation()
     {
         _IceAnimaor.Play("ice");
@@ -85,4 +106,9 @@ public class InventoryUI :MonoBehaviour
     {
         EventHandler.GameStart();
     }
+    public void ZombieIsComming()
+    {
+        _animator.Play("ZombieIsComming");
+    }
+    
 }

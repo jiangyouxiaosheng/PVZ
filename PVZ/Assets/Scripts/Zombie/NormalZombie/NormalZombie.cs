@@ -13,7 +13,7 @@ public class NormalZombie : MonoBehaviour
     public LayerMask layerMask;
     public Animator _animator;
     public ZombieAttributeManagement attributeManagement;
-
+    public AudioSource _audioSource => GetComponent<AudioSource>();
     void Start()
     {
         attributeManagement = GetComponent<ZombieAttributeManagement>();

@@ -10,6 +10,7 @@ public class Squash : MonoBehaviour
     public Animator _animator_Children;
     public Animator _animator;
     public PlantAttributeManagement attributeManagement;
+    private BoxCollider2D _box =>GetComponent<BoxCollider2D>();
     public bool isRight,isLeft;
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class Squash : MonoBehaviour
 
     void Start()
     {
+        _box.enabled = true;
         states.Add(PlantState.Idle, new SquashIdleState(this));
         TransitionState(PlantState.Idle);
 
@@ -48,20 +50,31 @@ public class Squash : MonoBehaviour
     {
         if (collision.gameObject.tag == "Zombie")
         {
-            if (collision.gameObject.transform.position.x > transform.position.x)
-            {
-                isRight = true;
-            }
-            else
-            {
-                isLeft = true;
-            }
-         
+            
+                if (collision.gameObject.transform.position.x < transform.position.x)
+                {
+                    isLeft = true;
+                    _box.enabled = false;
+                }
+                else
+                {
+
+                    isRight = true;
+                    _box.enabled = false;
+                }
+
+            
+
         }
     }
 
     public void DestroyGameobject()
     {
         Destroy(gameObject);
+    }
+
+    public void VoicePlay()
+    {
+        VoiceManager.Instance.Squash();
     }
 }

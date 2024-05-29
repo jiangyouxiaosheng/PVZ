@@ -15,8 +15,9 @@ public class ZombieEatState : IState
     }
     public void OnEnter()
     {
+        manager._audioSource.Play();
         //Debug.LogError(manager.zombieData.zombieName + "进入了吃植物的状态");
-        
+
     }
 
     public void OnUpdate()
@@ -28,6 +29,7 @@ public class ZombieEatState : IState
             {
                 if (timer < 0)
                 {
+                    
                     manager.hit.collider.GetComponent<PlantAttributeManagement>().PlantIsInjury(manager.zombieData.zombieAttack);
                     timer = 1;
                 }
@@ -46,7 +48,7 @@ public class ZombieEatState : IState
     }
     public void OnExit()
     {
-
+        manager._audioSource.Stop();
     }
     void EatState(int hp)
     {

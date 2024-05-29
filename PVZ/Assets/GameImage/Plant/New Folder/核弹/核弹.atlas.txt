@@ -1,0 +1,6 @@
+核弹.png
+size:161,283
+format:Alpha
+filter:Linear,Linear
+图层 8
+bounds:2,2,157,279

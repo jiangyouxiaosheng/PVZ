@@ -36,19 +36,7 @@ public class GameEventManager : MonoBehaviour
 
     private void Update()
     {
-
-        switch (eventNum)
-        {
-            case 7:
-                eventChangedNum = 3;
-                break;
-            case 5:
-                ZombieManager.Instance.normalZombieTime -= 0.5f;
-                ZombieManager.Instance.zombiesCurrentLastTime += 1f;
-                break;
-            default:
-                break;
-        }
+        EventNum();
         currenteventChangeTime -= Time.deltaTime;
         if (currenteventChangeTime <= 0)
         {
@@ -74,6 +62,7 @@ public class GameEventManager : MonoBehaviour
                     break;
                 case 3:
                     JustLife();
+                    eventNum += 1;
                     break;
                 case 21:
                     KillAllZombie();
@@ -130,6 +119,30 @@ public class GameEventManager : MonoBehaviour
 
 
     }
+    void EventNum()
+    {
+        if (eventNum % 5 == 0&& eventNum!=0)
+        {
+            if(ZombieManager.Instance.maxNormalTime >= 2)
+            {
+                ZombieManager.Instance.maxNormalTime -= 1f;
+            }
+            zombieData_SO.zombieHp += 10;
+            zombieData_SO.zombieMoveSpeed += 0.1f;
+            if (ZombieManager.Instance.zombieComeTime >= 30)
+            {
+                ZombieManager.Instance.zombieComeTime -= 20f;
+            }
+            ZombieManager.Instance.zombiesCurrentLastTime += 1f;
+            eventNum += 1;
+        }
+        else if(eventNum == 14)
+        {
+            eventChangedNum = 3;
+        }
+   
+
+    }
     void EventChang()
     {
         eventChangeTime = Random.Range(20, 30);
@@ -167,7 +180,7 @@ public class GameEventManager : MonoBehaviour
         EventImage(4);
         EventChang();
         ZombieManager.Instance.isZombiesComing = true;
-        ZombieManager.Instance.zombiesCurrentLastTime += 5;
+       
     }
     void ZombieMoveAdd()
     {
@@ -198,7 +211,8 @@ public class GameEventManager : MonoBehaviour
     {
         EventImage(9);
         EventChang();
-        SunManager.Instance.SunAdd(Random.Range(100, 500));
+        int t = Random.Range(100, 500);
+        SunManager.Instance.SunAdd(t);
     }
     void PlantAttackUp()
     {
@@ -222,7 +236,7 @@ public class GameEventManager : MonoBehaviour
         EventImage(13);
         EventChang();
         ZombieManager.Instance.zombiesCurrentLastTime += 5f;
-        ZombieManager.Instance.normalZombieTime -= 1f;
+        ZombieManager.Instance.maxNormalTime -= 1f;
         SunManager.Instance.createSunTime += 0.5f;
     }
 

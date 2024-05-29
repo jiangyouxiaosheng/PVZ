@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager>
     public int isCanUsePlantNum;
     public float gameTime;
     public bool gameStart;
-    public float zombieComeTime;
+ 
     public PlantDataList_SO plantDataList_SO;
     public ZombieData_SO zombieData_SO;
    // public List<GameObject> plantList = new List<GameObject>();
@@ -36,9 +36,11 @@ public class GameManager : Singleton<GameManager>
         if (gameStart)
         {
             gameTime += Time.deltaTime;
-            if((int)gameTime % zombieComeTime == 0 && (int)gameTime >1f)
+            if((int)gameTime % ZombieManager.Instance.zombieComeTime == 0 && (int)gameTime >1f)
             {
                 ZombieManager.Instance.isZombiesComing = true;
+              
+                EventHandler.ZombieIsComming(); 
             
             }
         }
@@ -51,6 +53,13 @@ public class GameManager : Singleton<GameManager>
         SunManager.Instance.dayIsDay = true;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Zombie")
+        {
+            EventHandler.GameOver();
+        }
+    }
 
-  
+
 }

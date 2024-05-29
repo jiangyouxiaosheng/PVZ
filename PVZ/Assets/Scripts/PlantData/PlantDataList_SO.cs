@@ -24,7 +24,7 @@ public class PlantDataList_SO : ScriptableObject
     {
         for (int i = 0; i < plantDataList.Count; i++)
         {
-            plantDataList[i].plantAttack = 8;
+            plantDataList[i].plantAttack = 7;
         }
     }
 }

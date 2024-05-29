@@ -8,7 +8,7 @@ public static class EventHandler
     public static event Action GameStartCameraMoveEvent;
     public static void GameStartCameraMove()
     {
-       GameStartCameraMoveEvent?.Invoke();
+        GameStartCameraMoveEvent?.Invoke();
     }
 
     public static event Action ChooseEndCameraMoveEvent;
@@ -22,5 +22,17 @@ public static class EventHandler
     {
         GameStartEvent?.Invoke();
     }
+    public static event Action ZombieIsCommingEvent;
+    public static void ZombieIsComming()
+    {
+        ZombieIsCommingEvent?.Invoke();
+    }
+    public static event Action GameOverEvent;
+    public static void GameOver()
+    {
+        GameOverEvent?.Invoke();
+    }
+
+
 
 }

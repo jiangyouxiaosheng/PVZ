@@ -5,18 +5,24 @@ using UnityEngine;
 public class NormalPlantBullet : MonoBehaviour
 {
     PlantBulletPool bulletPool;
-
+   
     public GameObject normalBullet;
     public GameObject fireBullet;
-    public int normalBulletDamage;
-    public int fireBulletDamage;
+    private int normalBulletDamage;
+    private int fireBulletDamage;
     public GameObject destroyThis;
-
+    private CircleCollider2D _circleCollider=>GetComponent<CircleCollider2D>();
+    private AudioSource _audioSource =>GetComponent<AudioSource>();
     bool isFire;
     private void Start()
     {
         bulletPool = GetComponentInParent<PlantBulletPool>();
-        fireBulletDamage = GetComponentInParent<PlantBulletPool>().gameObject.GetComponent<PlantAttributeManagement>().plantAttack;
+        normalBulletDamage = GetComponentInParent<PlantBulletPool>().gameObject.GetComponent<PlantAttributeManagement>().plantAttack;
+    }
+
+    private void OnEnable()
+    {
+        VoiceReady();
     }
 
     // Update is called once per frame
@@ -31,10 +37,12 @@ public class NormalPlantBullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Zombie")
         {
+            _audioSource.Play();
             if (isFire)
             {
-                collision.GetComponent<ZombieAttributeManagement>().ZombieIsInjury(fireBulletDamage);
+                collision.GetComponent<ZombieAttributeManagement>().ZombieIsInjury(normalBulletDamage+2);
                 Instantiate(destroyThis,transform.position, Quaternion.identity);
+                normalBullet.SetActive(false);
             }
             else
             {
@@ -43,10 +51,10 @@ public class NormalPlantBullet : MonoBehaviour
                 Instantiate(destroyThis, transform.position, Quaternion.identity);
             }
 
-            bulletPool.Return(gameObject);
-            isFire = false;
-            normalBullet.SetActive(true);
-            fireBullet.SetActive(false);
+           
+            VoicePlay();
+            StartCoroutine(WaitVoice());
+
         }
 
         if (collision.gameObject.tag == "Plant")
@@ -57,6 +65,24 @@ public class NormalPlantBullet : MonoBehaviour
                 isFire = true;
             }
         }
+    }
+    IEnumerator WaitVoice()
+    {
+        yield return new WaitForSeconds(1f);
+        bulletPool.Return(gameObject);
+    }
+    void VoicePlay()
+    {
+        normalBullet.SetActive(false);
+        _circleCollider.enabled = false;
+    }
+
+    void VoiceReady()
+    {
+        normalBullet.SetActive(true);
+        fireBullet.SetActive(false);
+        _circleCollider.enabled =true;
+        isFire = false;
     }
 
 
