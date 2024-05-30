@@ -16,6 +16,7 @@ public class PeashooterIdleState : IState
     {
         idleTimer = manager.plantData.plantAttackSpeed;
         manager._animator.Play("daiji");
+    
     }
     public void OnUpdate()
     {

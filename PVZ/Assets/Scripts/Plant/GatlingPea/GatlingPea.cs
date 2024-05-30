@@ -18,20 +18,28 @@ public class GatlingPea : MonoBehaviour
     }
     void Start()
     {
-
+        FindZombie();
         plantData = GetComponent<PlantAttributeManagement>().plantData;
         states.Add(PlantState.Idle, new GatlingPeaIdleState(this));
         states.Add(PlantState.Shoot, new GatlingPeaAttackState(this));
-        TransitionState(PlantState.Idle);
+        if (hit.collider != null && hit.collider.gameObject.tag == "Zombie")
+        {
+            TransitionState(PlantState.Shoot);
+        }
+        else
+        {
+            TransitionState(PlantState.Idle);
+        }
         plantBulletPool = GetComponent<PlantBulletPool>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        FindZombie();
         currentState.OnUpdate();
-        hit = Physics2D.Raycast(firePoint.transform.position, Vector2.right, 100f, layerMask);
-        Debug.LogError(hit.collider);
+       // hit = Physics2D.Raycast(firePoint.transform.position, Vector2.right, 100f, layerMask);
+     
     }
 
     public void TransitionState(PlantState type)
@@ -42,5 +50,9 @@ public class GatlingPea : MonoBehaviour
         }
         currentState = states[type];
         currentState.OnEnter();
+    }
+    void FindZombie()
+    {
+        hit = Physics2D.Raycast(firePoint.transform.position, Vector2.right, 100f, layerMask);
     }
 }

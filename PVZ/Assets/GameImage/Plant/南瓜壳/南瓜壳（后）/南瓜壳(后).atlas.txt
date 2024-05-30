@@ -1,0 +1,6 @@
+南瓜壳(后).png
+size:103,69
+format:Alpha
+filter:Linear,Linear
+Pumpkin_back
+bounds:2,2,99,65

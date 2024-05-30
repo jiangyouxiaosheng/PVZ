@@ -2,6 +2,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngineInternal;
 
 public class Peashooter : MonoBehaviour
 {
@@ -21,11 +22,21 @@ public class Peashooter : MonoBehaviour
     }
     void Start()
     {
+        FindZombie();
         attributeManagement = GetComponent<PlantAttributeManagement>();
         plantData = GetComponent<PlantAttributeManagement>().plantData;
-        states.Add(PlantState.Idle,new PeashooterIdleState(this));
+        states.Add(PlantState.Idle, new PeashooterIdleState(this));
         states.Add(PlantState.Shoot, new PeaShooterAttackState(this));
-        TransitionState(PlantState.Idle);
+        if (hit.collider != null && hit.collider.gameObject.tag == "Zombie")
+        {
+            TransitionState(PlantState.Shoot);
+        }
+        else
+        {
+            TransitionState(PlantState.Idle);
+        }
+
+    
         plantBulletPool = GetComponent<PlantBulletPool>();
     }
 
@@ -43,9 +54,9 @@ public class Peashooter : MonoBehaviour
                 gatlingCanUse.SetActive(false);
             }
         }
-   
+        FindZombie();
         currentState.OnUpdate();
-        hit = Physics2D.Raycast(firePoint.transform.position, Vector2.right,100f,layerMask);
+       
     
     }
 
@@ -58,6 +69,9 @@ public class Peashooter : MonoBehaviour
         currentState = states[type];
         currentState.OnEnter();
     }
+     void FindZombie()
+    {
+        hit = Physics2D.Raycast(firePoint.transform.position, Vector2.right, 100f, layerMask);
+    }
 
-    
 }
