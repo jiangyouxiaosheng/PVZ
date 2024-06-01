@@ -16,6 +16,7 @@ public class ZombieDiestate : IState
     public void OnEnter()
     {
         timer = 1f;
+       
         manager._animator.Play("ËÀÍö");
     }
     public void OnUpdate()

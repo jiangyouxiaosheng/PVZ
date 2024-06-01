@@ -42,7 +42,10 @@ public class SunManager : Singleton<SunManager>
     
     }
    
-
+    public void SunSet(int sun)
+    {
+        currentSun = sun;
+    }
     public void SunAdd(int sun)
     {
         currentSun += sun;

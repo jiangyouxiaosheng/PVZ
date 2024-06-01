@@ -26,13 +26,13 @@ public class PlantAttributeManagement : MonoBehaviour
     }
     private void Update()
     {
-        plantAttack = plantData.plantAttack;
+        plantAttack = plantData_S0.plantAttack;
     }
     public void PlantIsInjury(int damage)
     {
         Debug.Log(plantData.plantName + "’˝‘⁄ ‹…À");
         plantData.plantHp -= damage;
-        Debug.LogError(plantData.plantHp); 
+        Debug.Log(plantData.plantHp);
         if(plantData.plantHp <= 0)
         {
             VoiceManager.Instance.Eat();

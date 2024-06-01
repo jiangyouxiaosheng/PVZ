@@ -5,14 +5,19 @@ using UnityEngine;
 public class NormalPlantBullet : MonoBehaviour
 {
     PlantBulletPool bulletPool;
-   
+
     public GameObject normalBullet;
     public GameObject fireBullet;
+    public GameObject boomBullet;
+    public GameObject boomDestroyThis;
+    public bool isPeaShooterGirl;
+    bool isBoomBullet;
     private int normalBulletDamage;
-    private int fireBulletDamage;
     public GameObject destroyThis;
-    private CircleCollider2D _circleCollider=>GetComponent<CircleCollider2D>();
-    private AudioSource _audioSource =>GetComponent<AudioSource>();
+
+    float returnTime = 10f;
+    private CircleCollider2D _circleCollider => GetComponent<CircleCollider2D>();
+    private AudioSource _audioSource => GetComponent<AudioSource>();
     bool isFire;
     private void Start()
     {
@@ -22,49 +27,69 @@ public class NormalPlantBullet : MonoBehaviour
 
     private void OnEnable()
     {
+        returnTime = 10;
         VoiceReady();
     }
 
     // Update is called once per frame
     void Update()
     {
+        returnTime -= Time.deltaTime;
+        if (returnTime <= 0)
+        {
+            bulletPool.Return(gameObject);
+        }
         transform.Translate(Vector2.right * Time.deltaTime * 3f);
      
     }
 
-
+    public void IsPeaShooterGirl(bool force)
+    {
+        isPeaShooterGirl = force;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.tag == "Zombie")
         {
             _audioSource.Play();
-            if (isFire)
+           
+            if(isBoomBullet)
             {
-                collision.GetComponent<ZombieAttributeManagement>().ZombieIsInjury(normalBulletDamage+2);
-                Instantiate(destroyThis,transform.position, Quaternion.identity);
-                normalBullet.SetActive(false);
+                Instantiate(boomDestroyThis, transform.position, Quaternion.identity);
+                boomBullet.SetActive(false);
             }
             else
             {
-                collision.GetComponent<ZombieAttributeManagement>().ZombieIsInjury(normalBulletDamage);
-                collision.GetComponent<ZombieAttributeManagement>().moveSpeedDownTime = 5f;
-                Instantiate(destroyThis, transform.position, Quaternion.identity);
-            }
-
-           
+                if (isFire)
+                {
+                    collision.GetComponent<ZombieAttributeManagement>().ZombieIsInjury(normalBulletDamage + 2);
+                    Instantiate(destroyThis, transform.position, Quaternion.identity);
+                    normalBullet.SetActive(false);
+                }
+                else if (isFire == false)
+                {
+                    collision.GetComponent<ZombieAttributeManagement>().ZombieIsInjury(normalBulletDamage);
+                    collision.GetComponent<ZombieAttributeManagement>().moveSpeedDownTime = 5f;
+                    Instantiate(destroyThis, transform.position, Quaternion.identity);
+                }
+            } 
             VoicePlay();
             StartCoroutine(WaitVoice());
 
         }
 
-        if (collision.gameObject.tag == "Plant")
+        if (collision.gameObject.tag == "Plant"&&isBoomBullet==false)
         {
-            if(collision.gameObject.GetComponent<Torchwood>()!=null)
+            if (collision.gameObject.GetComponent<Torchwood>() != null)
             {
                 fireBullet.SetActive(true);
                 isFire = true;
             }
         }
+
+
+
     }
     IEnumerator WaitVoice()
     {
@@ -79,12 +104,37 @@ public class NormalPlantBullet : MonoBehaviour
 
     void VoiceReady()
     {
-        normalBullet.SetActive(true);
-        fireBullet.SetActive(false);
-        _circleCollider.enabled =true;
-        isFire = false;
+        if (isPeaShooterGirl)
+        {
+            if (gameObject.GetComponentInParent<PeaShooterGirl>().shootNum >= 4)
+            {
+                gameObject.GetComponentInParent<PeaShooterGirl>().shootNum = 0;
+                normalBullet.SetActive(false);
+                boomBullet.SetActive(true);
+                _circleCollider.enabled = true;
+                isBoomBullet = true;
+            }
+            else
+            {
+                normalBullet.SetActive(true);
+                fireBullet.SetActive(false);
+                boomBullet.SetActive(false);
+                _circleCollider.enabled = true;
+                isFire = false;
+                isBoomBullet =false;
+            }
+        }
+        else
+        {
+            isBoomBullet = false;
+            normalBullet.SetActive(true);
+            fireBullet.SetActive(false);
+            boomBullet.SetActive(false);
+            _circleCollider.enabled = true;
+            isFire = false;
+        }
+     
     }
 
 
 }
-    

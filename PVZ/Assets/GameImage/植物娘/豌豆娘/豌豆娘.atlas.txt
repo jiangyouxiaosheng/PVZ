@@ -1,0 +1,17 @@
+豌豆娘.png
+size:1814,1118
+format:Alpha
+filter:Linear,Linear
+图层 4
+bounds:2,2,1162,1114
+offsets:3,1,1199,1118
+图层 5
+bounds:1166,393,646,723
+offsets:73,41,728,765
+图层 6
+bounds:1488,59,332,186
+offsets:1,2,342,190
+rotate:90
+图层 7
+bounds:1166,71,320,320
+offsets:7,2,329,326

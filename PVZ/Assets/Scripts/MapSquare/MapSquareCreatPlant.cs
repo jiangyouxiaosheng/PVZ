@@ -68,6 +68,10 @@ public class MapSquareCreatPlant : MonoBehaviour
             MapCreate.Instance.destroyPumkin.Add(plant, this.gameObject);
             slot.GetComponent<PlantSlot>().ResetCd();
             SunManager.Instance.SunDown(plantData.plantNeedSun);
+            if (plantData.canUseNum > 0)
+            {
+                plantData.canUseNum--;
+            }
             //GameManager.Instance.plantList.Add(plant);
         }
        if(thisSquareIsUse == false && plantData.plantID != 1008)
@@ -79,6 +83,10 @@ public class MapSquareCreatPlant : MonoBehaviour
             var plant = Instantiate(plantDatalist.GetInventoryItem(plantID).plantPrefabs, plantParents);
             plant.transform.position = transform.position;
             MapCreate.Instance.destroyPlant.Add(plant, this.gameObject);
+            if (plantData.canUseNum > 0)
+            {
+                plantData.canUseNum--;
+            }
             //GameManager.Instance.plantList.Add(plant);
 
         }

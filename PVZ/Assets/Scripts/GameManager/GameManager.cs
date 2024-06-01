@@ -29,7 +29,7 @@ public class GameManager : Singleton<GameManager>
     }
     private void Start()
     {
-        EventHandler.GameStartCameraMove();
+       
     }
     private void Update()
     {

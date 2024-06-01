@@ -17,9 +17,14 @@ public class PlantSlot : MonoBehaviour
     private Text plantName;
     [SerializeField]
     private Image plantNameImage;
+    [SerializeField]
+    private TextMeshProUGUI plantGrilCanUseNum;
     private float plantMaxCD;
     public float plantCurrentCD;
     public GameObject needSunImage;
+
+
+    public bool isPlantGril;
     //为了赶工期临时加的变量，直接给id赋值
     public int plantID;
 
@@ -39,8 +44,26 @@ public class PlantSlot : MonoBehaviour
 
     private void Update()
     {
-        Sun(plantData.plantNeedSun);
-
+        if (isPlantGril == false)
+        {
+            Sun(plantData.plantNeedSun);
+            plantGrilCanUseNum.gameObject.SetActive(false);
+            plantNeedSun.gameObject.SetActive(true);
+        }
+        else
+        {
+            plantGrilCanUseNum.gameObject.SetActive(true);
+            plantNeedSun.gameObject.SetActive(false);
+            if(plantData.canUseNum <= 0)
+            {
+                needSunImage.gameObject.SetActive(true);
+            }
+            else
+            {
+                needSunImage.gameObject.SetActive(false);
+            }
+        }
+        plantGrilCanUseNum.text = plantData.canUseNum.ToString();
         plantCurrentCD -= Time.deltaTime;
         if (plantCurrentCD > 0)
         {
@@ -53,7 +76,6 @@ public class PlantSlot : MonoBehaviour
             plantCurrentCD = 0;
         }
 
-
     }
 
     public void ResetCd()
@@ -62,16 +84,29 @@ public class PlantSlot : MonoBehaviour
     }
     public void FollowMoustEvent()
     {
-        if(plantCurrentCD <= 0 && SunManager.Instance.SunClick(plantData.plantNeedSun))
+        if(isPlantGril == false)
         {
-            if (plantData.plantID != 1003)
+            if (plantCurrentCD <= 0 && SunManager.Instance.SunClick(plantData.plantNeedSun))
             {
-                MapCreate.Instance.MapTrue();
+                if (plantData.plantID != 1003)
+                {
+                    MapCreate.Instance.MapTrue();
+                }
+
+                inventoryUI.drawImage.GetComponent<DrawPlantImage>().FollowMousePos(plantID, gameObject);
             }
 
-            inventoryUI.drawImage.GetComponent<DrawPlantImage>().FollowMousePos(plantID,gameObject);
         }
-       
+        else
+        {
+            if (plantCurrentCD <= 0 && plantData.canUseNum>0)
+            {
+                MapCreate.Instance.MapTrue();
+                inventoryUI.drawImage.GetComponent<DrawPlantImage>().FollowMousePos(plantID, gameObject);
+            }
+        }
+
+
     }
  
     public void Sun(int needSun)

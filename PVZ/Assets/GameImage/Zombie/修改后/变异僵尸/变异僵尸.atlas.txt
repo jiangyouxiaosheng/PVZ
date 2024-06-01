@@ -1,0 +1,65 @@
+变异僵尸.png
+size:189,127
+format:Alpha
+filter:Linear,Linear
+Zombie_innerarm_hand
+bounds:108,16,22,26
+rotate:90
+Zombie_innerarm_lower
+bounds:92,49,19,24
+offsets:1,2,21,26
+rotate:90
+Zombie_innerarm_upper
+bounds:102,70,15,22
+offsets:0,1,17,25
+Zombie_ladder_innerleg_foot
+bounds:119,79,39,22
+offsets:0,1,39,24
+Zombie_ladder_innerleg_upper
+bounds:55,2,20,32
+offsets:0,1,21,34
+rotate:90
+Zombie_outerleg_foot
+bounds:56,70,44,22
+offsets:0,0,44,23
+Zombie_outerleg_lower
+bounds:157,34,26,30
+offsets:0,1,26,32
+rotate:90
+Zombie_paper_hands2
+bounds:157,11,23,21
+下巴
+bounds:56,52,34,16
+图层 10
+bounds:89,14,17,33
+offsets:0,4,19,37
+图层 11
+bounds:2,63,52,62
+offsets:1,1,55,64
+图层 12
+bounds:161,93,26,32
+图层 3
+bounds:2,3,58,51
+rotate:90
+图层 4
+bounds:119,60,17,36
+offsets:1,1,19,37
+rotate:90
+图层 5
+bounds:136,9,19,29
+offsets:1,0,25,31
+图层 7
+bounds:119,103,22,40
+offsets:1,23,32,64
+rotate:90
+图层 8
+bounds:55,24,32,26
+offsets:2,1,35,28
+图层 9
+bounds:160,62,27,29
+头发
+bounds:56,94,61,31
+领带
+bounds:118,40,18,31
+offsets:1,1,19,32
+rotate:90

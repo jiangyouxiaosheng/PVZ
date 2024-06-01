@@ -9,6 +9,8 @@ public class ZombieAttributeManagement : MonoBehaviour
     public NormalZombie normalZombie;
     public GameObject iceImage;
     public GameObject iceSpecialEffects;
+    public GameObject wallnutEffects;
+    private float wallnutTimer;
     public float cantMoveTime;
     public float moveSpeedDownTime;
     public bool isCantMove;
@@ -23,10 +25,15 @@ public class ZombieAttributeManagement : MonoBehaviour
 
     private void Update()
     {
+        wallnutTimer -=Time.deltaTime;
         ZombieMoveSpeedDown();
         if (isCantMove)
         {
             ZombieIsCantMove();
+        }
+        if (wallnutTimer < 0)
+        {
+            wallnutEffects.SetActive(false);
         }
   
        
@@ -83,6 +90,12 @@ public class ZombieAttributeManagement : MonoBehaviour
             iceSpecialEffects.SetActive(false);
             zombieData.zombieMoveSpeed = zombieData_SO.zombieMoveSpeed ;
         }
+    }
+
+    public void WallnutAttack()
+    {
+        wallnutTimer = 0.2f;
+        wallnutEffects.gameObject.SetActive(true);
     }
 
 }

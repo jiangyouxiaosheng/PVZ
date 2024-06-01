@@ -12,10 +12,13 @@ public class PlantData_SO : ScriptableObject
     public int plantHp;
     public float plantAttackSpeed;
     public int plantNeedSun;
+    public int canUseNum;
     public bool plantSleep;
     public float plantCD;
+    public float initPlantCD;
     public int plantAttackNum;
     public int plantAttack;
+    public int initPlantAttack;
     public GameObject plantPrefabs;
 
 

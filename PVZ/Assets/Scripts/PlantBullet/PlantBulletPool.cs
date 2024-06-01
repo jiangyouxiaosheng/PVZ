@@ -7,7 +7,7 @@ public class PlantBulletPool : MonoBehaviour
 {
     [SerializeField]
     private GameObject bulletPrefabs;//×Óµ¯Ä£ÐÍ
-
+    public bool isPeaShooterGirl;
     Queue<GameObject> groundQueue = new Queue<GameObject>();
     private Transform thisTransform;
     int size = 10;
@@ -23,6 +23,12 @@ public class PlantBulletPool : MonoBehaviour
     GameObject Copy()
     {
         var copy = GameObject.Instantiate(bulletPrefabs, transform);
+
+        if (copy.gameObject.GetComponentInParent<NormalPlantBullet>() != null)
+        {
+            copy.gameObject.GetComponentInParent<NormalPlantBullet>().IsPeaShooterGirl(isPeaShooterGirl);
+        }
+           
         copy.SetActive(false);
         return copy;
     }

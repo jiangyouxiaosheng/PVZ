@@ -32,6 +32,16 @@ public static class EventHandler
     {
         GameOverEvent?.Invoke();
     }
+    public static event Action DiffficultyChooseEndEvent;
+    public static void DiffficultyChooseEnd()
+    {
+        DiffficultyChooseEndEvent.Invoke();
+    }
+    public static event Action<float> GameEventTimeSet;
+    public static void GameEventTime(float time)
+    {
+        GameEventTimeSet.Invoke(time);
+    }
 
 
 

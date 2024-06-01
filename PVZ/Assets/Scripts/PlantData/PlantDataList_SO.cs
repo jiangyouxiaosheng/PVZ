@@ -19,12 +19,29 @@ public class PlantDataList_SO : ScriptableObject
             plantDataList[i].plantAttack += num;
         }
     }
+    public void PlantCDAdd(float cd)
+    {
+        for (int i = 0; i < plantDataList.Count; i++)
+        {
+            plantDataList[i].plantCD +=cd;
+        }
+    }
 
     public void Init()
     {
         for (int i = 0; i < plantDataList.Count; i++)
         {
-            plantDataList[i].plantAttack = 7;
+            plantDataList[i].plantAttack = plantDataList[i].initPlantAttack;
+            plantDataList[i].plantCD = plantDataList[i].initPlantCD;
+            plantDataList[i].canUseNum = 0;
+        }
+    }
+    public void CanUseNumADD()
+    {
+        for (int i = 0; i < plantDataList.Count; i++)
+        {
+            plantDataList[i].canUseNum += 1 ;
+          
         }
     }
 }

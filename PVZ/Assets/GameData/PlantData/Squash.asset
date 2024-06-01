@@ -19,7 +19,9 @@ MonoBehaviour:
   plantAttackSpeed: 0
   plantNeedSun: 50
   plantSleep: 0
-  plantCD: 18
+  plantCD: 30
+  initPlantCD: 30
   plantAttackNum: 0
-  plantAttack: 17
+  plantAttack: 2
+  initPlantAttack: 0
   plantPrefabs: {fileID: 4167091704346510057, guid: 9e5144a8c272cff4ba19e5d538948650, type: 3}

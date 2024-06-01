@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class GameEventManager : MonoBehaviour
+public class GameEventManager : Singleton<GameEventManager>
 {
     public Transform plants;
     public GameObject eventPanl;
@@ -18,14 +18,22 @@ public class GameEventManager : MonoBehaviour
     private float currenteventChangeTime;
     private int eventNum;
     private int eventChangedNum;
-
+    private bool gameStart;
     int maxEventNum = 36;
 
     public ZombieData_SO zombieData_SO;
 
+    private void OnEnable()
+    {
+        EventHandler.GameEventTimeSet += EventChangeTimeSet;
+    }
+    private void OnDisable()
+    {
+        EventHandler.GameEventTimeSet -= EventChangeTimeSet;
+    }
     private void Awake()
     {
-       currenteventChangeTime = eventChangeTime;
+        gameStart = false;
     }
 
     private void Start()
@@ -36,88 +44,102 @@ public class GameEventManager : MonoBehaviour
 
     private void Update()
     {
-        EventNum();
-        currenteventChangeTime -= Time.deltaTime;
-        if (currenteventChangeTime <= 0)
+        if (gameStart)
         {
-            eventPanl.SetActive(true);
-            Time.timeScale = 0;
-
-            switch (eventChangedNum)
+            EventNum();
+            currenteventChangeTime -= Time.deltaTime;
+            if (currenteventChangeTime <= 0)
             {
-                case 0:
-                    GameStart();
-                    eventChangeTime = 30;
-                    eventChangedNum = 1;
-                    break;
-                case 1:
-                    News();
-                    eventChangeTime = 20;
-                    eventChangedNum = 2;
-                    break;
-                case 2:
-                    ZombieIsComingStart();
-                    eventChangeTime = Random.Range(20, 30);
-                    eventChangedNum = Random.Range(21, maxEventNum);
-                    break;
-                case 3:
-                    JustLife();
-                    eventNum += 1;
-                    break;
-                case 21:
-                    KillAllZombie();
-                    break;
-                case 22:
-                    AddZombie();
-                    break;
-                case 23:
-                    ZombieMoveAdd();
-                    break;
-                case 24:
-                    ZombieMoveDown();
-                    break;
-                case 25:
-                    ZombieAttackDown();
-                    break;
-                case 26:
-                    ZombieAttackUp();
-                    break;
-                case 27:
-                    NiceDay();
-                    break;
-                case 28:
-                    PlantAttackUp();
-                    break;
-                case 29:
-                    ZombieIsComingTimeAdd();
-                    break;
-                case 30:
-                    NormalEvent();
-                    break;
-                case 31:
-                    LostFreeSun();
-                    break;
-                    case 32:
-                    ZombieHpUp();
-                    break;
-                case 33:
-                    NormalEvent2();
-                    break;
-                case 34:
-                    NormalEvent3();
-                    break;
-                case 35:
-                    FuckingLife();
-                    break;
+                eventPanl.SetActive(true);
+                Time.timeScale = 0;
 
-                default:
-                    EventChang();
-                    break;
+                switch (eventChangedNum)
+                {
+                    case 0:
+                        GameStart();
+                        eventChangeTime = 30;
+                        eventChangedNum = 1;
+                        break;
+                    case 1:
+                        News();
+                        eventChangeTime = 20;
+                        eventChangedNum = 2;
+                        break;
+                    case 2:
+                        ZombieIsComingStart();
+                        eventChangeTime = Random.Range(20, 30);
+                        eventChangedNum = Random.Range(21, maxEventNum);
+                        break;
+                    case 3:
+                        JustLife();
+                        eventNum += 1;
+                        break;
+                    case 4:
+                        PlantPowerUp();
+                        break;
+                    case 21:
+                        KillAllZombie();
+                        break;
+                    case 22:
+                        AddZombie();
+                        break;
+                    case 23:
+                        ZombieMoveAdd();
+                        break;
+                    case 24:
+                        ZombieMoveDown();
+                        break;
+                    case 25:
+                        ZombieAttackDown();
+                        break;
+                    case 26:
+                        ZombieAttackUp();
+                        break;
+                    case 27:
+                        NiceDay();
+                        break;
+                    case 28:
+                        PlantAttackUp();
+                        break;
+                    case 29:
+                        ZombieIsComingTimeAdd();
+                        break;
+                    case 30:
+                        NormalEvent();
+                        break;
+                    case 31:
+                        LostFreeSun();
+                        break;
+                    case 32:
+                        ZombieHpUp();
+                        break;
+                    case 33:
+                        NormalEvent2();
+                        break;
+                    case 34:
+                        NormalEvent3();
+                        break;
+                    case 35:
+                        FuckingLife();
+                        break;
+
+                    default:
+                        EventChang();
+                        break;
+                }
+                currenteventChangeTime = eventChangeTime;
             }
-            currenteventChangeTime = eventChangeTime;
+
         }
 
 
+    }
+
+    public void EventChangeTimeSet(float eventTime)
+    {
+        eventChangeTime = eventTime;
+        currenteventChangeTime = eventChangeTime;
+        gameStart = true;
     }
     void EventNum()
     {
@@ -140,7 +162,11 @@ public class GameEventManager : MonoBehaviour
         {
             eventChangedNum = 3;
         }
-   
+        else if (eventNum % 15 ==0 && eventNum!=0)
+        {
+            eventChangedNum = 4;
+        }
+
 
     }
     void EventChang()
@@ -269,6 +295,12 @@ public class GameEventManager : MonoBehaviour
         EventImage(18);
         EventChang();
         SunManager.Instance.SunDown(Random.Range(50, 200));
+    }
+    void PlantPowerUp()
+    {
+        EventImage(19);
+        EventChang();
+        plantDataList_SO.CanUseNumADD();
     }
 
     public void CloseWindow()

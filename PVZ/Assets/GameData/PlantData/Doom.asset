@@ -20,6 +20,8 @@ MonoBehaviour:
   plantNeedSun: 400
   plantSleep: 0
   plantCD: 90
+  initPlantCD: 90
   plantAttackNum: 0
-  plantAttack: 8
+  plantAttack: 2
+  initPlantAttack: 0
   plantPrefabs: {fileID: 213512561089872380, guid: e21d4d53f9cf8104a9dcb0631c05da96, type: 3}
